@@ -26,6 +26,8 @@ Este archivo se completa al iniciar cada sitio derivado de la plantilla.
 - Notas y entrevistas:
 - Enlaces de compra:
 - Redes:
+- Correo oficial del autor:
+- ¿Ese correo se usa para Goodreads, Amazon, editoriales u otras cuentas autorales?:
 - Datos de contacto:
 - Preferencias estéticas:
 
@@ -67,6 +69,16 @@ Criterio de aceptación: cada sección debe poder percibirse completa dentro del
 
 ### Regla de venta
 Las acciones de compra pertenecen siempre a la sección Libro/Obra, junto a portada, título, sinopsis y datos del libro. No colocar CTA de venta en la presentación del autor.
+
+### Correo oficial / verificación autoral
+El correo debe considerarse un activo de identidad digital, no solo un medio de contacto.
+
+Comprobar:
+- que sea un correo real y controlado por el autor;
+- que esté claramente asociado al nombre del autor;
+- que, si existe dominio propio, pueda usarse una dirección de ese dominio;
+- que sea coherente con las cuentas autorales relevantes;
+- que pueda servir como evidencia pública en reclamaciones o verificaciones de perfiles.
 
 ### Navegación
 - nombre del autor → Inicio;
