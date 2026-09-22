@@ -1,19 +1,12 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { site } from '../content/site';
-
-const schema = {
-  '@context': 'https://schema.org',
-  '@type': 'Person',
-  name: site.name,
-  url: new URL('/autor/', site.url).href,
-  description: site.author.longBio,
-};
+import { personSchema } from '../core/schema';
 ---
 <BaseLayout
   title={`Sobre ${site.name} | ${site.role}`}
   description={site.author.shortBio}
-  schema={schema}
+  schema={personSchema()}
 >
   <section class="section">
     <div class="container grid-two">
