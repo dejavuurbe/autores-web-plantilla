@@ -1,0 +1,9 @@
+{
+  "name": "Nombre del autor",
+  "short_name": "Autor",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f5f2ec",
+  "theme_color": "#f5f2ec",
+  "icons": []
+}
