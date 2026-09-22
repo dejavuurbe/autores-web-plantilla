@@ -2,6 +2,37 @@
 
 Este archivo se completa al iniciar cada sitio derivado de la plantilla.
 
+## 0. Pedido al autor — lista cerrada para Web Clase 1
+
+Para una Web Clase 1 se solicita únicamente este material. No agregar pedidos que impliquen nuevas funciones o secciones fuera de la arquitectura aprobada.
+
+1. Nombre público con el que quiere aparecer.
+2. Ciudad o ubicación pública, si desea mostrarla.
+3. Foto de autor en la mejor calidad disponible.
+4. Biografía breve o información suficiente para redactarla.
+5. Título y subtítulo de la obra principal.
+6. Portada en la mejor calidad disponible.
+7. Sinopsis de la obra.
+8. Datos editoriales disponibles: género, año de publicación, cantidad de páginas, ISBN y editorial/tipo de edición.
+9. Enlace o enlaces reales de compra de la obra.
+10. Hasta tres actividades literarias que quiera destacar, indicando lugar/institución y, si existe, enlace público que permita documentarlas.
+11. Correo oficial del autor y redes sociales que quiera mostrar.
+12. Un capítulo de la obra que el autor sienta que representa especialmente bien el libro.
+
+### Uso del capítulo representativo
+
+El capítulo no se pide para crear una sección nueva ni para publicarlo automáticamente. Se utiliza como material de trabajo interno para comprender mejor:
+- la voz y el tono del autor;
+- los temas centrales de la obra;
+- el tipo de lector al que puede interesarle;
+- la atmósfera y lenguaje del libro;
+- qué rasgos conviene destacar al redactar la presentación y la sinopsis comercial de la web;
+- cómo traducir la identidad real de la obra al diseño, en vez de inferirla solo desde la portada.
+
+El capítulo no se publica en la web salvo autorización expresa del autor.
+
+Esta lista es deliberadamente cerrada. Newsletter, reseñas, premios, videos, agenda, textos gratuitos, segunda obra y otras funciones no se solicitan para Clase 1 porque no forman parte de la arquitectura aprobada.
+
 ## 1. Diagnóstico de identidad digital
 
 - Nombre público del autor:
