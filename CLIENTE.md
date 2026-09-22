@@ -18,6 +18,11 @@ Este archivo se completa al iniciar cada sitio derivado de la plantilla.
 
 - Biografía:
 - Sinopsis:
+- Género:
+- Año de publicación:
+- Cantidad de páginas:
+- ISBN:
+- Editorial / tipo de edición:
 - Portadas:
 - Fotografías:
 - Obras / bibliografía:
@@ -66,6 +71,9 @@ Referencia aprobada en escritorio a 100 % de zoom:
 - En móvil/tablet estrecha: altura natural, sin forzar viewport.
 
 Criterio de aceptación: cada sección debe poder percibirse completa dentro del campo visible cuando la cantidad de contenido lo permita. Si se colocan dos bloques equivalentes dentro de un mismo campo visual, diseñarlos como medias secciones.
+
+### Datos editoriales del libro
+Si el autor dispone de ellos, mostrar en la sección Libro/Obra: género, año, páginas, ISBN y editorial/tipo de edición. Son datos breves que refuerzan la presencia editorial del libro sin crear una sección adicional. Los campos ausentes se ocultan; no se inventan.
 
 ### Regla de venta
 Las acciones de compra pertenecen siempre a la sección Libro/Obra, junto a portada, título, sinopsis y datos del libro. No colocar CTA de venta en la presentación del autor.
