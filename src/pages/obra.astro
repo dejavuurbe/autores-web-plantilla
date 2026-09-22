@@ -1,0 +1,79 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../content/site';
+import { bookSchema, faqSchema } from '../core/schema';
+const book = site.featuredBook;
+---
+<BaseLayout
+  title={`${book.title} | ${site.name}`}
+  description={book.synopsis}
+  schema={[bookSchema(), faqSchema()]}
+>
+  <section class="section">
+    <div class="container grid-two">
+      <img
+        src={book.cover}
+        alt={`Portada de ${book.title}`}
+        width="520"
+        height="780"
+      />
+      <article>
+        <p class="eyebrow">Libro</p>
+        <h1>{book.title}</h1>
+        <p class="lead">{book.subtitle}</p>
+        <p>{book.synopsis}</p>
+        <dl>
+          <div><dt>Autor</dt><dd>{site.name}</dd></div>
+          <div><dt>Género</dt><dd>{book.genre}</dd></div>
+          <div><dt>Año</dt><dd>{book.year}</dd></div>
+          <div><dt>Páginas</dt><dd>{book.pages}</dd></div>
+          <div><dt>ISBN</dt><dd>{book.isbn}</dd></div>
+          <div><dt>Edición</dt><dd>{book.publisher}</dd></div>
+        </dl>
+        <a class="button" href={book.buyUrl}>Dónde conseguirlo</a>
+      </article>
+    </div>
+  </section>
+
+  <section class="section faq">
+    <div class="container">
+      <p class="eyebrow">Preguntas frecuentes</p>
+      <h2>Sobre el autor y la obra</h2>
+      <div class="faq-grid">
+        {site.faq.map((item) => (
+          <article class="card">
+            <h3>{item.question}</h3>
+            <p>{item.answer}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  img {
+    max-width: 390px;
+    margin-inline: auto;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+  }
+  dl { margin: 2rem 0; }
+  dl div {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 1rem;
+    padding: .55rem 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+  dt { font-weight: 700; }
+  dd { margin: 0; color: var(--color-muted); }
+  .faq { background: var(--color-surface); }
+  .faq-grid {
+    display: grid;
+    gap: 1rem;
+  }
+  @media (min-width: 760px) {
+    .faq-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>

@@ -1,0 +1,15 @@
+# Nombre del autor
+
+Sitio oficial de un autor. Sustituir este contenido al crear cada proyecto.
+
+## Información principal
+- Autor: Nombre del autor
+- Profesión: Escritor/a
+- Obra destacada: Título de la obra
+- Sitio oficial: https://example.com
+
+## Secciones
+- /autor/ — biografía y trayectoria
+- /obra/ — información bibliográfica y sinopsis
+- /prensa/ — entrevistas, notas y actividad cultural
+- /contacto/ — contacto oficial

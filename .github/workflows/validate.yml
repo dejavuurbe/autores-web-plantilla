@@ -1,0 +1,31 @@
+name: Validar plantilla
+
+on:
+  push:
+    branches:
+      - main
+      - desarrollo-inicial
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Instalar dependencias
+        run: npm install
+
+      - name: Validar Astro
+        run: npm run check
+
+      - name: Generar sitio
+        run: npm run build

@@ -1,0 +1,89 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../content/site';
+import { personSchema } from '../core/schema';
+---
+<BaseLayout
+  title={`${site.name} | ${site.role}`}
+  description={site.description}
+  schema={personSchema()}
+>
+  <section class="hero section">
+    <div class="container hero-grid">
+      <div>
+        <p class="eyebrow">{site.role}</p>
+        <h1>{site.name}</h1>
+        <p class="lead">{site.tagline}</p>
+        <div class="actions">
+          <a class="button" href="/obra/">Conocer la obra</a>
+          <a class="button secondary" href="/autor/">Sobre el autor</a>
+        </div>
+      </div>
+      <img
+        class="portrait"
+        src={site.author.photo}
+        alt={`Retrato de ${site.name}`}
+        width="700"
+        height="820"
+      />
+    </div>
+  </section>
+
+  <section class="section book-section">
+    <div class="container grid-two">
+      <img
+        class="cover"
+        src={site.featuredBook.cover}
+        alt={`Portada de ${site.featuredBook.title}`}
+        width="520"
+        height="780"
+      />
+      <div>
+        <p class="eyebrow">Obra destacada</p>
+        <h2>{site.featuredBook.title}</h2>
+        <p class="lead">{site.featuredBook.synopsis}</p>
+        <a class="button" href="/obra/">Ver libro</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow">Presentación</p>
+      <h2>Quién es {site.name}</h2>
+      <p class="lead">{site.author.shortBio}</p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero { padding-top: clamp(3rem, 8vw, 8rem); }
+  .hero-grid {
+    display: grid;
+    gap: clamp(2rem, 6vw, 6rem);
+    align-items: center;
+  }
+  .portrait {
+    width: 100%;
+    max-height: 680px;
+    object-fit: cover;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+  }
+  .actions {
+    display: flex;
+    gap: .75rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+  }
+  .book-section { background: var(--color-surface); }
+  .cover {
+    max-width: 360px;
+    margin-inline: auto;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+  }
+  @media (min-width: 850px) {
+    .hero-grid { grid-template-columns: 1.2fr .8fr; }
+  }
+</style>
