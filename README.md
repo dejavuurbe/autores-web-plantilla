@@ -33,6 +33,10 @@ Clases disponibles:
 - `.section-half` — referencia de media sección;
 - añadir `.compact` cuando se necesite el padding vertical compacto validado.
 
+### Datos editoriales del libro
+
+La Web Nivel 1 admite dentro de la propia sección Libro/Obra los siguientes datos, solo cuando existan y estén verificados: género, año, páginas, ISBN y editorial/tipo de edición. Se muestran como ficha compacta para dar mayor presencia editorial al libro sin sumar páginas ni secciones.
+
 ### Regla comercial estructural
 
 La **venta pertenece al libro, no al autor**. Los CTA de compra deben ubicarse dentro de la sección de la obra, junto a portada, título, sinopsis y datos editoriales. La presentación del autor se utiliza para identidad y orientación, no para acciones comerciales de compra.
