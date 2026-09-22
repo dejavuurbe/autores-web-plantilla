@@ -30,6 +30,26 @@ a { color: inherit; }
   padding: clamp(3.5rem, 8vw, 7rem) 0;
 }
 
+.section-screen {
+  min-height: var(--section-full);
+  display: grid;
+  align-items: center;
+}
+
+.section-half {
+  min-height: var(--section-half);
+  display: grid;
+  align-items: center;
+}
+
+.section-screen.compact {
+  padding-block: var(--section-full-pad-y);
+}
+
+.section-half.compact {
+  padding-block: var(--section-half-pad-y);
+}
+
 .eyebrow {
   margin: 0 0 .75rem;
   font-size: .78rem;
@@ -97,4 +117,12 @@ h2 {
 
 @media (min-width: 800px) {
   .grid-two { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 919px) {
+  .section-screen,
+  .section-half {
+    min-height: auto;
+    display: block;
+  }
 }
