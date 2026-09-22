@@ -1,14 +1,13 @@
 ---
 import { site } from '../content/site';
+const base = import.meta.env.BASE_URL;
 ---
 <header class="site-header">
   <div class="container inner">
-    <a class="brand" href="/">{site.name}</a>
+    <a class="brand" href={base}>{site.name}</a>
     <nav aria-label="Navegación principal">
-      <a href="/autor/">Autor</a>
-      <a href="/obra/">Obra</a>
-      <a href="/prensa/">Prensa</a>
-      <a href="/contacto/">Contacto</a>
+      <a href={`${base}actividad/`}>Actividad</a>
+      <a href={`${base}actividad/#contacto`}>Contacto</a>
     </nav>
   </div>
 </header>
@@ -43,9 +42,5 @@ import { site } from '../content/site';
   nav a {
     font-size: .92rem;
     text-decoration: none;
-  }
-  @media (max-width: 620px) {
-    .inner { align-items: flex-start; padding-block: .8rem; }
-    nav { gap: .55rem .8rem; }
   }
 </style>
