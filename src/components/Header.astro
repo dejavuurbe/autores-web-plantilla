@@ -1,0 +1,51 @@
+---
+import { site } from '../content/site';
+---
+<header class="site-header">
+  <div class="container inner">
+    <a class="brand" href="/">{site.name}</a>
+    <nav aria-label="Navegación principal">
+      <a href="/autor/">Autor</a>
+      <a href="/obra/">Obra</a>
+      <a href="/prensa/">Prensa</a>
+      <a href="/contacto/">Contacto</a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    border-bottom: 1px solid var(--color-border);
+    background: color-mix(in srgb, var(--color-bg) 92%, transparent);
+    backdrop-filter: blur(12px);
+  }
+  .inner {
+    min-height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .brand {
+    font-family: var(--font-display);
+    font-weight: 700;
+    text-decoration: none;
+  }
+  nav {
+    display: flex;
+    gap: .9rem;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+  nav a {
+    font-size: .92rem;
+    text-decoration: none;
+  }
+  @media (max-width: 620px) {
+    .inner { align-items: flex-start; padding-block: .8rem; }
+    nav { gap: .55rem .8rem; }
+  }
+</style>
