@@ -1,23 +1,13 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { site } from '../content/site';
+import { bookSchema, faqSchema } from '../core/schema';
 const book = site.featuredBook;
-
-const schema = {
-  '@context': 'https://schema.org',
-  '@type': 'Book',
-  name: book.title,
-  author: { '@type': 'Person', name: site.name },
-  isbn: book.isbn,
-  datePublished: book.year,
-  bookFormat: 'https://schema.org/Paperback',
-  description: book.synopsis,
-};
 ---
 <BaseLayout
   title={`${book.title} | ${site.name}`}
   description={book.synopsis}
-  schema={schema}
+  schema={[bookSchema(), faqSchema()]}
 >
   <section class="section">
     <div class="container grid-two">
