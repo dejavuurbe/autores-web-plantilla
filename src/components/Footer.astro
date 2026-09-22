@@ -1,0 +1,40 @@
+---
+import { site } from '../content/site';
+const year = new Date().getFullYear();
+---
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <strong>{site.name}</strong>
+      <p>{site.role} · {site.location}</p>
+    </div>
+    <div class="links">
+      {site.social.map((item) => <a href={item.url}>{item.label}</a>)}
+      <a href={`mailto:${site.email}`}>Contacto</a>
+    </div>
+  </div>
+  <div class="container legal">© {year} {site.name}</div>
+</footer>
+
+<style>
+  .site-footer {
+    padding: 3rem 0 1.5rem;
+    border-top: 1px solid var(--color-border);
+  }
+  .footer-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  p, .legal { color: var(--color-muted); }
+  .links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .legal {
+    margin-top: 2rem;
+    font-size: .85rem;
+  }
+</style>
