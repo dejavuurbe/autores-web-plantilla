@@ -53,6 +53,18 @@ Este archivo se completa al iniciar cada sitio derivado de la plantilla.
 - fuentes externas;
 - contacto y redes.
 
+### Medidas de sección
+
+Referencia aprobada en escritorio a 100 % de zoom:
+- Header: 76 px.
+- Sección completa: alto útil = 100svh - header.
+- Media sección: 50 % del alto útil.
+- Padding compacto completo: clamp(1.8rem, 3.2vh, 2.8rem).
+- Padding compacto medio: clamp(1rem, 2vh, 1.8rem).
+- En móvil/tablet estrecha: altura natural, sin forzar viewport.
+
+Criterio de aceptación: cada sección debe poder percibirse completa dentro del campo visible cuando la cantidad de contenido lo permita. Si se colocan dos bloques equivalentes dentro de un mismo campo visual, diseñarlos como medias secciones.
+
 ### Regla de venta
 Las acciones de compra pertenecen siempre a la sección Libro/Obra, junto a portada, título, sinopsis y datos del libro. No colocar CTA de venta en la presentación del autor.
 
