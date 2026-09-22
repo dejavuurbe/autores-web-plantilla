@@ -35,19 +35,31 @@ Este archivo se completa al iniciar cada sitio derivado de la plantilla.
 - Tono:
 - Paleta:
 - Tipografías:
+- Motivo o textura:
+- Elemento gráfico distintivo:
 - Recursos visuales:
 - Elementos que deben evitarse:
 
-## 4. Arquitectura
+## 4. Arquitectura — Web Nivel 1
 
-- Inicio:
-- Autor:
-- Obras:
-- Textos:
-- Prensa / actividad:
-- Reseñas:
-- FAQ:
-- Contacto:
+### Página 1 / Inicio
+- presentación del autor;
+- obra principal;
+- CTA de compra dentro de la sección Libro/Obra;
+- biografía.
+
+### Página 2 / Actividad
+- actividad, presentaciones, prensa o recorrido público;
+- fuentes externas;
+- contacto y redes.
+
+### Regla de venta
+Las acciones de compra pertenecen siempre a la sección Libro/Obra, junto a portada, título, sinopsis y datos del libro. No colocar CTA de venta en la presentación del autor.
+
+### Navegación
+- nombre del autor → Inicio;
+- Actividad → segunda página;
+- Contacto → ancla de contacto dentro de la segunda página.
 
 ## 5. SEO / AEO
 

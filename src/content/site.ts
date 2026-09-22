@@ -30,6 +30,7 @@ export const site = {
     isbn: '000-0-00-000000-0',
     publisher: 'Editorial / Independiente',
     buyUrl: '#',
+    buyLabel: 'Adquirí tu ejemplar',
   },
   press: [
     {

@@ -1,22 +1,21 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { site } from '../content/site';
-import { personSchema } from '../core/schema';
+import { personSchema, bookSchema } from '../core/schema';
 ---
 <BaseLayout
   title={`${site.name} | ${site.role}`}
   description={site.description}
-  schema={personSchema()}
+  schema={[personSchema(), bookSchema()]}
 >
-  <section class="hero section">
+  <section class="hero section" id="inicio">
     <div class="container hero-grid">
       <div>
         <p class="eyebrow">{site.role}</p>
         <h1>{site.name}</h1>
         <p class="lead">{site.tagline}</p>
         <div class="actions">
-          <a class="button" href="/obra/">Conocer la obra</a>
-          <a class="button secondary" href="/autor/">Sobre el autor</a>
+          <a class="button secondary" href="#obra">Conocer la obra</a>
         </div>
       </div>
       <img
@@ -29,7 +28,7 @@ import { personSchema } from '../core/schema';
     </div>
   </section>
 
-  <section class="section book-section">
+  <section class="section book-section" id="obra">
     <div class="container grid-two">
       <img
         class="cover"
@@ -39,19 +38,34 @@ import { personSchema } from '../core/schema';
         height="780"
       />
       <div>
-        <p class="eyebrow">Obra destacada</p>
+        <p class="eyebrow">Obra</p>
         <h2>{site.featuredBook.title}</h2>
+        {site.featuredBook.subtitle && <p class="book-subtitle">{site.featuredBook.subtitle}</p>}
         <p class="lead">{site.featuredBook.synopsis}</p>
-        <a class="button" href="/obra/">Ver libro</a>
+
+        {site.featuredBook.buyUrl && (
+          <div class="purchase">
+            <a
+              class="button"
+              href={site.featuredBook.buyUrl}
+              target="_blank"
+              rel="noopener"
+            >
+              {site.featuredBook.buyLabel || 'Adquirí tu ejemplar'}
+            </a>
+          </div>
+        )}
       </div>
     </div>
   </section>
 
-  <section class="section">
-    <div class="container">
-      <p class="eyebrow">Presentación</p>
-      <h2>Quién es {site.name}</h2>
-      <p class="lead">{site.author.shortBio}</p>
+  <section class="section" id="autor">
+    <div class="container bio-grid">
+      <div>
+        <p class="eyebrow">Biografía</p>
+        <h2>Sobre {site.name}</h2>
+      </div>
+      <p class="lead">{site.author.longBio}</p>
     </div>
   </section>
 </BaseLayout>
@@ -83,7 +97,20 @@ import { personSchema } from '../core/schema';
     border-radius: 8px;
     box-shadow: var(--shadow);
   }
+  .book-subtitle {
+    margin: -.25rem 0 1rem;
+    color: var(--color-muted);
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+  }
+  .purchase { margin-top: 2rem; }
+  .bio-grid {
+    display: grid;
+    gap: clamp(2rem, 6vw, 5rem);
+    align-items: start;
+  }
   @media (min-width: 850px) {
     .hero-grid { grid-template-columns: 1.2fr .8fr; }
+    .bio-grid { grid-template-columns: .8fr 1.2fr; }
   }
 </style>
