@@ -37,6 +37,21 @@ Clases disponibles:
 
 La **venta pertenece al libro, no al autor**. Los CTA de compra deben ubicarse dentro de la sección de la obra, junto a portada, título, sinopsis y datos editoriales. La presentación del autor se utiliza para identidad y orientación, no para acciones comerciales de compra.
 
+### Correo oficial e identidad verificable
+
+La sección Contacto no sirve solamente para recibir mensajes. El correo oficial visible es también una pieza de **identidad digital verificable** del autor.
+
+Funciones:
+- contacto con lectores, prensa, bibliotecas, instituciones y organizadores;
+- referencia pública de identidad;
+- apoyo para reclamar o validar perfiles de autor en plataformas externas;
+- coherencia entre web oficial, tiendas, redes y servicios editoriales;
+- ayuda para distinguir al autor frente a homónimos.
+
+Cuando exista dominio propio, se prioriza un correo del tipo `nombre@dominio.com`. Si el autor usa Gmail u otro proveedor, puede mostrarse igualmente si es el correo real vinculado a su identidad autoral.
+
+En prototipos puede usarse un correo ficticio para probar el diseño, pero debe sustituirse por un correo real antes de la publicación definitiva.
+
 ## Principios
 
 - Identidad del autor por encima de una estética genérica.
