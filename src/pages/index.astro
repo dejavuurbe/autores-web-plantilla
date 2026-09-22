@@ -1,21 +1,12 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { site } from '../content/site';
-
-const personSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Person',
-  name: site.name,
-  url: site.url,
-  jobTitle: site.role,
-  description: site.description,
-  sameAs: site.social.map((item) => item.url).filter((url) => url !== '#'),
-};
+import { personSchema } from '../core/schema';
 ---
 <BaseLayout
   title={`${site.name} | ${site.role}`}
   description={site.description}
-  schema={personSchema}
+  schema={personSchema()}
 >
   <section class="hero section">
     <div class="container hero-grid">
