@@ -76,7 +76,6 @@ En prototipos puede usarse un correo ficticio para probar el diseño, pero debe 
 6. Validación automática del build.
 7. Publicación de la versión aprobada en `main`.
 
-
 ## Principio rector — “Ahí está todo”
 
 La plantilla se construye como centro digital del autor. El autor debe poder dar su dominio —o indicar que busquen su nombre + obra— y desde allí el visitante debe poder resolver identidad, obra, acceso/compra, trayectoria relevante, redes y contacto.
@@ -86,3 +85,22 @@ Recorrido funcional: **INTERÉS → IDENTIFICACIÓN → COMPRENSIÓN / CONFIANZA
 La arquitectura se organiza por funciones reutilizables, no por la estética de un caso piloto: **IDENTIFICAR, INTERESAR, CONVENCER, ACCEDER, VINCULAR y RECUPERAR**. Los datos del cliente, la identidad visual, los componentes y la capa semántica deben permanecer separados.
 
 El modelo de datos admite múltiples obras y múltiples antecedentes desde el origen. Clase 1 expone una selección deliberadamente limitada; las clases superiores pueden ampliar esa representación sin reconstruir la identidad desde cero.
+
+## Recuperabilidad de identidad — recuerdo imperfecto o incompleto
+
+La función **RECUPERAR** no se limita a errores ortográficos. Una persona puede recordar correctamente solo una parte de la identidad: el nombre de pila y la obra, el apellido y la obra, parte del título o algún dato distintivo.
+
+Durante el diagnóstico de cada autor debe construirse un **mapa de recuperabilidad** y probar combinaciones razonables como:
+
+- nombre + obra;
+- apellido + obra;
+- nombre completo + obra;
+- variantes ortográficas previsibles del nombre, apellido o título;
+- título parcial o variante razonable;
+- cuando aporte valor real, obra + dato distintivo verificado (género, temática, localidad, editorial u otro).
+
+Las variantes no deben trasladarse mecánicamente a la presentación humana ni utilizarse como relleno de palabras clave. Primero se prueban para detectar fallos reales de recuperación. Después se decide qué señales legítimas conviene reforzar mediante contenido, metadatos, relaciones semánticas y capa máquina.
+
+La identidad visible conserva siempre la forma canónica correcta. La capa técnica puede registrar variantes razonables y relaciones útiles para desambiguación y recuperación, sin inventar datos ni prometer posiciones concretas en buscadores.
+
+La prueba de entrega correspondiente se denomina **“recuerdo imperfecto o incompleto”**: se verifica si la identidad puede reconstruirse con información plausible pero parcial o ligeramente incorrecta.
