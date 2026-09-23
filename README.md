@@ -75,3 +75,14 @@ En prototipos puede usarse un correo ficticio para probar el diseño, pero debe 
 5. Revisión en una rama de desarrollo.
 6. Validación automática del build.
 7. Publicación de la versión aprobada en `main`.
+
+
+## Principio rector — “Ahí está todo”
+
+La plantilla se construye como centro digital del autor. El autor debe poder dar su dominio —o indicar que busquen su nombre + obra— y desde allí el visitante debe poder resolver identidad, obra, acceso/compra, trayectoria relevante, redes y contacto.
+
+Recorrido funcional: **INTERÉS → IDENTIFICACIÓN → COMPRENSIÓN / CONFIANZA → ACCESO A LA OBRA → COMPRA O LECTURA → CONTINUIDAD DEL VÍNCULO**.
+
+La arquitectura se organiza por funciones reutilizables, no por la estética de un caso piloto: **IDENTIFICAR, INTERESAR, CONVENCER, ACCEDER, VINCULAR y RECUPERAR**. Los datos del cliente, la identidad visual, los componentes y la capa semántica deben permanecer separados.
+
+El modelo de datos admite múltiples obras y múltiples antecedentes desde el origen. Clase 1 expone una selección deliberadamente limitada; las clases superiores pueden ampliar esa representación sin reconstruir la identidad desde cero.
