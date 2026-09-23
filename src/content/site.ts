@@ -1,4 +1,6 @@
 export type SiteLevel = 1 | 2 | 3;
+type Link = { label: string; url: string };
+type ActivityItem = { title: string; type: string; source: string; url: string; description: string };
 
 const works = [
   {
@@ -13,7 +15,7 @@ const works = [
     isbn: '000-0-00-000000-0',
     publisher: 'Editorial / Independiente',
     sampleUrl: '',
-    purchaseLinks: [{ label: 'Adquirí tu ejemplar', url: '#' }],
+    purchaseLinks: [{ label: 'Adquirí tu ejemplar', url: '#' }] as Link[],
     featured: true,
     aliases: [] as string[],
   },
@@ -33,7 +35,7 @@ export const site = {
   social: [
     { label: 'Instagram', url: '#' },
     { label: 'Facebook', url: '#' },
-  ],
+  ] as Link[],
   author: {
     shortBio: 'Biografía breve para la portada. Debe responder rápidamente quién es el autor y qué escribe.',
     longBio: 'Biografía extendida. Sustituir por información verificada, trayectoria, publicaciones y actividad cultural relevante.',
@@ -52,7 +54,7 @@ export const site = {
       url: '#',
       description: 'Contexto breve y verificable sobre el antecedente.',
     },
-  ],
+  ] as ActivityItem[],
 
   // Mapa derivado del diagnóstico. No se muestra como texto ni se usa para keyword stuffing.
   recovery: {
