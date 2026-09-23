@@ -3,6 +3,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { site } from '../content/site';
 import { identityGraphSchema, faqSchema } from '../core/schema';
 
+const asset = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\\//, '')}`;
+
 const bookMeta = [
   ['Género', site.featuredBook.genre],
   ['Año', site.featuredBook.year],
@@ -24,13 +26,13 @@ const bookMeta = [
         <p class="lead">{site.tagline}</p>
         <div class="actions"><a class="button secondary" href="#obra">Conocer la obra</a></div>
       </div>
-      <img class="portrait" src={site.author.photo} alt={`Retrato de ${site.name}`} width="700" height="820" />
+      <img class="portrait" src={asset(site.author.photo)} alt={`Retrato de ${site.name}`} width="700" height="820" />
     </div>
   </section>
 
   <section class="section book-section" id="obra">
     <div class="container grid-two">
-      <img class="cover" src={site.featuredBook.cover} alt={`Portada de ${site.featuredBook.title}`} width="520" height="780" />
+      <img class="cover" src={asset(site.featuredBook.cover)} alt={`Portada de ${site.featuredBook.title}`} width="520" height="780" />
       <div>
         <p class="eyebrow">Obra</p>
         <h2>{site.featuredBook.title}</h2>
