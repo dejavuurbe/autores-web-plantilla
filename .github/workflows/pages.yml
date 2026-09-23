@@ -17,6 +17,9 @@ concurrency:
 
 jobs:
   build:
+    # La plantilla no se publica a sí misma. Esta condición se copia al repositorio hijo,
+    # donde sí permite el despliegue automático.
+    if: github.repository != 'dejavuurbe/autores-web-plantilla'
     runs-on: ubuntu-latest
     steps:
       - name: Descargar repositorio
