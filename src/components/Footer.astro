@@ -9,8 +9,8 @@ const year = new Date().getFullYear();
       <p>{site.role} · {site.location}</p>
     </div>
     <div class="links">
-      {site.social.map((item) => <a href={item.url}>{item.label}</a>)}
-      <a href={`mailto:${site.email}`}>Contacto</a>
+      {site.social.filter((item) => item.url && item.url !== "#").map((item) => <a href={item.url} target="_blank" rel="me noopener">{item.label}</a>)}
+      {site.email && <a href={`mailto:${site.email}`}>Contacto</a>}
     </div>
   </div>
   <div class="container legal">© {year} {site.name}</div>
