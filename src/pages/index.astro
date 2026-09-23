@@ -62,16 +62,21 @@ const bookMeta = [
           </dl>
         )}
 
-        {site.featuredBook.buyUrl && (
+        {site.featuredBook.purchaseLinks?.some((item) => item.url && item.url !== '#') && (
           <div class="purchase">
-            <a
-              class="button"
-              href={site.featuredBook.buyUrl}
-              target="_blank"
-              rel="noopener"
-            >
-              {site.featuredBook.buyLabel || 'Adquirí tu ejemplar'}
-            </a>
+            {site.featuredBook.purchaseLinks
+              .filter((item) => item.url && item.url !== '#')
+              .map((item) => (
+                <a class="button" href={item.url} target="_blank" rel="noopener">
+                  {item.label}
+                </a>
+              ))}
+          </div>
+        )}
+
+        {site.featuredBook.sampleUrl && (
+          <div class="sample-link">
+            <a href={site.featuredBook.sampleUrl}>Leer una muestra autorizada</a>
           </div>
         )}
       </div>
@@ -143,7 +148,8 @@ const bookMeta = [
     margin: .2rem 0 0;
     font-weight: 600;
   }
-  .purchase { margin-top: 1.5rem; }
+  .purchase { margin-top: 1.5rem; display: flex; gap: .75rem; flex-wrap: wrap; }
+  .sample-link { margin-top: 1rem; }
   .bio-grid {
     display: grid;
     gap: clamp(2rem, 6vw, 5rem);
