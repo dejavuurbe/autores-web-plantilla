@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { site } from '../content/site';
 import { identityGraphSchema, faqSchema } from '../core/schema';
 
-const asset = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\\//, '')}`;
+const asset = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}`;
 
 const bookMeta = [
   ['Género', site.featuredBook.genre],
