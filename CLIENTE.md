@@ -15,7 +15,7 @@ Para una Web Clase 1 se solicita únicamente este material. No agregar pedidos q
 7. Sinopsis de la obra.
 8. Datos editoriales disponibles: género, año de publicación, cantidad de páginas, ISBN y editorial/tipo de edición.
 9. Enlace o enlaces reales de compra de la obra.
-10. Hasta tres actividades literarias que quiera destacar, indicando lugar/institución y, si existe, enlace público que permita documentarlas.
+10. Información sobre actividad literaria, presentaciones, prensa, reconocimientos o antecedentes que el diagnóstico indique que conviene confirmar. La selección final de Clase 1 admite hasta tres hitos y la realiza el proyecto por valor estratégico, con aprobación del autor.
 11. Correo oficial del autor y redes sociales que quiera mostrar.
 12. Un capítulo de la obra que el autor sienta que representa especialmente bien el libro.
 
@@ -31,7 +31,7 @@ El capítulo no se pide para crear una sección nueva ni para publicarlo automá
 
 El capítulo no se publica en la web salvo autorización expresa del autor.
 
-Esta lista es deliberadamente cerrada. Newsletter, reseñas, premios, videos, agenda, textos gratuitos, segunda obra y otras funciones no se solicitan para Clase 1 porque no forman parte de la arquitectura aprobada.
+La solicitud base se complementa con preguntas dirigidas por el diagnóstico. No se agregan funciones por acumulación. Si aparecen otras obras, premios, entrevistas, videos u otros activos reales, se registran y evalúan: Clase 1 muestra solo lo que corresponda a su arquitectura, y el resto queda disponible para futuras ampliaciones.
 
 ## 1. Diagnóstico de identidad digital
 
@@ -142,3 +142,13 @@ Comprobar:
 - Dominio:
 - Analytics / Search Console:
 - Fecha de publicación:
+
+
+## 7. Prueba funcional — “Ahí está todo”
+
+Antes de publicar, comprobar:
+- **Dominio directo:** con solo el dominio, un visitante puede identificar al autor, comprender la obra, encontrar cómo conseguirla y localizar contacto/redes.
+- **Búsqueda natural:** nombre + obra permite reconocer y llegar a la referencia oficial una vez indexada.
+- **Recuerdo imperfecto:** se prueban variantes razonables detectadas en el diagnóstico, sin mostrar errores ortográficos en la capa humana.
+
+La web no promete ventas ni posiciones determinadas en buscadores. Su función es recibir el interés generado por el autor y conducirlo hacia la obra, la compra o lectura y la continuidad del vínculo.
