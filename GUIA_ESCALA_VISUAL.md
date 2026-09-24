@@ -273,3 +273,68 @@ Lo que sí debe mantenerse como referencia es la relación entre **altura visibl
 La experiencia de ajuste mostró que definir solo `min-height: 100vh` no alcanza. También hay que definir el **presupuesto de contenido** de cada sección.
 
 A partir de esta calibración, cada nuevo sitio debe comenzar con estos límites y solo apartarse de ellos cuando el contenido o la identidad del autor lo justifiquen.
+
+
+## 9. Lección reutilizable — variantes artísticas y secciones auxiliares
+
+La revisión de la web de Pierre Menard confirmó que la escala visual debe aplicarse **sin homogeneizar la identidad artística**.
+
+### Secciones completas y medias
+
+No todos los bloques necesitan ocupar una pantalla completa. Usar:
+
+- `.section-screen compact` para hero, obra, biografía o lectura cuando constituyen una unidad narrativa principal;
+- `.section-half compact` para citas críticas, contacto breve u otros bloques auxiliares que funcionan como pausa o transición.
+
+La sección media mantiene ritmo visual sin crear grandes vacíos artificiales.
+
+### Imágenes principales en pantallas bajas
+
+Después de compactar márgenes, interlineados y texto, una imagen principal puede necesitar un límite dinámico para respetar la altura útil. Ese límite debe depender del viewport, no ser una reducción fija:
+
+```css
+.portrait {
+  max-height: min(680px, calc(var(--section-full) - 5.5rem));
+}
+
+.book-visual {
+  max-height: min(650px, calc(var(--section-full) - 8rem));
+}
+```
+
+Esto conserva el tamaño máximo previsto en pantallas amplias y solo interviene cuando la altura disponible realmente lo exige.
+
+### CTA asociado a una imagen
+
+Cuando un botón de compra o acceso está colocado **debajo de la imagen** y no en la columna textual, su altura, margen y pie de foto forman parte del presupuesto vertical del bloque visual. La validación debe contemplar el conjunto:
+
+**imagen + pie + separación + CTA**.
+
+No debe evaluarse únicamente la altura de la imagen.
+
+### Orden de compactación confirmado
+
+La experiencia de Menard reafirma este orden:
+
+1. reducir padding y márgenes verticales;
+2. compactar interlineados y espacios entre elementos;
+3. comprobar el presupuesto de texto;
+4. resumir notas o párrafos secundarios que excedan el presupuesto;
+5. aplicar límites dinámicos a la imagen solo si aún son necesarios;
+6. no alterar recursos gráficos, tipografías o composición artística que no causen el problema.
+
+### Móvil
+
+Toda variante que utilice `.section-screen` o `.section-half` debe incluir la salida a flujo natural por debajo de 920 px:
+
+```css
+@media (max-width: 919px) {
+  .section-screen,
+  .section-half {
+    min-height: auto;
+    display: block;
+  }
+}
+```
+
+La lógica de “una visualización” es una referencia de composición para escritorio, no una obligación de altura en móvil.
