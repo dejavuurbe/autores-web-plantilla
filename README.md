@@ -104,3 +104,8 @@ Las variantes no deben trasladarse mecánicamente a la presentación humana ni u
 La identidad visible conserva siempre la forma canónica correcta. La capa técnica puede registrar variantes razonables y relaciones útiles para desambiguación y recuperación, sin inventar datos ni prometer posiciones concretas en buscadores.
 
 La prueba de entrega correspondiente se denomina **“recuerdo imperfecto o incompleto”**: se verifica si la identidad puede reconstruirse con información plausible pero parcial o ligeramente incorrecta.
+
+
+## Escala visual y presupuesto de contenido
+
+La referencia de altura visible, tipografías, interlineado y cantidad de texto por sección está documentada en [GUIA_ESCALA_VISUAL.md](./GUIA_ESCALA_VISUAL.md). Debe consultarse antes de adaptar un nuevo autor para evitar recalibraciones manuales innecesarias.
