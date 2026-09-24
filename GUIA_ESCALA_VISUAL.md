@@ -338,3 +338,76 @@ Toda variante que utilice `.section-screen` o `.section-half` debe incluir la sa
 ```
 
 La lógica de “una visualización” es una referencia de composición para escritorio, no una obligación de altura en móvil.
+
+
+## 10. Lección reutilizable — caber no es suficiente: proporción y ancho de lectura
+
+La corrección final de la página de correspondencia de Pierre Menard mostró un segundo criterio de aceptación: una sección puede entrar técnicamente dentro de la altura disponible y aun así estar mal compuesta.
+
+El error detectado fue combinar:
+
+- un título con un ancho máximo demasiado pequeño;
+- un cuerpo de texto limitado a una columna demasiado estrecha;
+- un interlineado relativamente amplio.
+
+Ese conjunto aumentó innecesariamente la altura del bloque y rompió la jerarquía visual, aunque cada elemento por separado parecía legible.
+
+### Regla de ancho para títulos
+
+No usar límites en `ch` que obliguen a cortar un título en más líneas de las que pide su composición natural.
+
+Para títulos editoriales grandes:
+
+- preferir **1–2 líneas** en escritorio;
+- evitar 3 o más líneas cuando el ancho disponible permite una composición más horizontal;
+- antes de reducir el tamaño de fuente, revisar el `max-width` del título.
+
+Ejemplo correcto:
+
+```css
+h1 {
+  max-width: none;
+  font-size: clamp(2.6rem, 4vw, 3.55rem);
+  line-height: .98;
+}
+```
+
+### Regla de ancho para texto continuo
+
+El texto de lectura no debe estrecharse solo para controlar la composición vertical.
+
+Como referencia:
+
+```css
+.letter-copy {
+  max-width: 58ch;
+}
+```
+
+Para prosa continua en escritorio, un rango aproximado de **50–65 caracteres por línea** suele preservar una lectura natural y evita convertir párrafos moderados en bloques excesivamente altos.
+
+### Criterio de aceptación adicional
+
+Una sección se considera bien calibrada solo cuando cumple simultáneamente:
+
+1. entra en la visualización prevista;
+2. mantiene una jerarquía tipográfica natural;
+3. el título no se fragmenta artificialmente;
+4. el cuerpo conserva un ancho de lectura cómodo;
+5. no se obtiene la altura correcta a costa de una columna demasiado angosta;
+6. la composición se percibe equilibrada en el conjunto, no solo elemento por elemento.
+
+### Diagnóstico antes de compactar
+
+Cuando una sección queda demasiado alta, revisar también la **anchura efectiva de cada bloque**. Un problema aparentemente vertical puede tener origen horizontal.
+
+Orden de diagnóstico ampliado:
+
+1. comprobar ancho disponible y saltos de línea;
+2. comprobar márgenes y padding;
+3. comprobar interlineado;
+4. comprobar presupuesto de texto;
+5. ajustar tipografía secundaria;
+6. recién después modificar dimensiones de imágenes o elementos principales.
+
+Este criterio debe aplicarse especialmente a cartas, citas, manifiestos, biografías, prólogos y otros bloques de prosa continua.
