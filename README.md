@@ -183,3 +183,36 @@ Regla operativa:
 5. usar ese enlace como URL oficial en la web si resuelve correctamente.
 
 El nombre de usuario puede seguir mostrándose como texto visible, pero la navegación debe usar preferentemente el enlace compartido por la propia plataforma cuando éste funcione mejor.
+
+
+### Conversión de obra sin plataforma de pago — página intermedia + WhatsApp
+
+Cuando el autor todavía no dispone de tienda o checkout directo, evitar un CTA débil o ambiguo como “Consultar”.
+
+Flujo recomendado:
+
+**Libro/Obra → “Quiero mi ejemplar” → página intermedia → WhatsApp**
+
+La página intermedia:
+- agradece el interés;
+- confirma que el visitante está avanzando hacia la obtención del libro;
+- explica que se abrirá WhatsApp;
+- ofrece un botón con mensaje precargado;
+- puede mantener el correo como alternativa.
+
+Privacidad:
+- no mostrar el teléfono personal como texto en la sección general de Contacto salvo decisión expresa;
+- reservar WhatsApp para una acción concreta;
+- el número seguirá estando técnicamente presente en el enlace `wa.me`, pero una página intermedia reduce su exposición casual.
+
+### Navegación interna móvil — Astro
+
+En sitios Astro multipágina, priorizar una navegación interna fluida para evitar la sensación de recarga completa en celular.
+
+Referencia validada:
+- usar `ClientRouter` de `astro:transitions` en el layout común;
+- activar `prefetch` para enlaces internos cuando sea apropiado;
+- probar Inicio → Actividad → Compra/solicitud → Atrás en un celular real;
+- los enlaces externos a redes, correo y WhatsApp mantienen su navegación externa normal.
+
+Si aparece un destello o transición visible durante el prototipo en `github.io`, distinguir entre un problema interno de navegación y el comportamiento del hosting temporal. La prueba final se repite sobre el dominio oficial.
