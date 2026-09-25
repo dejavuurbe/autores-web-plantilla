@@ -163,3 +163,23 @@ Reglas:
 - en móvil se apila debajo del copyright;
 - puede desactivarse excepcionalmente con `enabled: false`;
 - el enlace de la firma debe apuntar siempre a la página oficial vigente del servicio.
+
+
+### Enlaces móviles a redes sociales — usar enlace de “Compartir perfil”
+
+Para Instagram y Facebook, cuando el objetivo es que el visitante abra correctamente el perfil desde celular, se prioriza el **enlace generado por la propia opción “Compartir perfil” de la aplicación** frente a construir manualmente una URL a partir del nombre de usuario.
+
+Motivo práctico validado en móvil:
+- el enlace compartido por la propia red resuelve mejor hacia la app instalada;
+- reduce pasos intermedios y comportamientos inconsistentes del navegador;
+- evita depender de variantes manuales del nombre de usuario;
+- mantiene una experiencia más directa desde la web hacia la red social.
+
+Regla operativa:
+1. pedir al autor que abra su perfil en Instagram o Facebook;
+2. usar la opción **Compartir perfil**;
+3. copiar el enlace generado por la aplicación;
+4. probarlo desde celular;
+5. usar ese enlace como URL oficial en la web si resuelve correctamente.
+
+El nombre de usuario puede seguir mostrándose como texto visible, pero la navegación debe usar preferentemente el enlace compartido por la propia plataforma cuando éste funcione mejor.
