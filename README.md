@@ -109,3 +109,33 @@ La prueba de entrega correspondiente se denomina **“recuerdo imperfecto o inco
 ## Escala visual y presupuesto de contenido
 
 La referencia de altura visible, tipografías, interlineado y cantidad de texto por sección está documentada en [GUIA_ESCALA_VISUAL.md](./GUIA_ESCALA_VISUAL.md). Debe consultarse antes de adaptar un nuevo autor para evitar recalibraciones manuales innecesarias.
+
+
+### Footer estándar — identidad del cliente + firma de desarrollo
+
+Todas las webs generadas desde la plantilla incluyen un footer común con **dos zonas diferenciadas**:
+
+1. **Zona del cliente** — nombre, descripción breve, ubicación, enlaces propios y copyright.
+2. **Zona de firma de desarrollo** — atribución discreta con el texto “Diseño y desarrollo web por” y la marca gráfica del proyecto, enlazada a la página oficial de presentación del servicio.
+
+La firma no debe competir visualmente con la identidad del autor. Usa el color secundario del sitio y toma el color de acento al interactuar. La marca está implementada como máscara monocromática para adaptarse automáticamente a la paleta de cada web.
+
+La configuración vive en `site.ts`:
+
+```ts
+footerLine: 'Escritor/a · Ciudad, País',
+credit: {
+  enabled: true,
+  label: 'Diseño y desarrollo web por',
+  url: 'https://dejavuurbe.github.io/pierre-menard-web/proyecto/',
+},
+```
+
+Reglas:
+
+- la zona del cliente tiene prioridad visual;
+- la firma aparece en todas las páginas porque forma parte de `BaseLayout`;
+- no utiliza fondo propio;
+- en móvil se apila debajo del copyright;
+- puede desactivarse excepcionalmente con `enabled: false`;
+- el enlace de la firma debe apuntar siempre a la página oficial vigente del servicio.
