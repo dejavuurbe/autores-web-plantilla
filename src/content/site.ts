@@ -32,6 +32,12 @@ export const site = {
   url: 'https://example.com',
   email: 'contacto@example.com',
   location: 'Ciudad, País',
+  footerLine: 'Escritor/a · Ciudad, País',
+  credit: {
+    enabled: true,
+    label: 'Diseño y desarrollo web por',
+    url: 'https://dejavuurbe.github.io/pierre-menard-web/proyecto/',
+  },
   social: [
     { label: 'Instagram', url: '#' },
     { label: 'Facebook', url: '#' },
