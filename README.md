@@ -111,6 +111,30 @@ La prueba de entrega correspondiente se denomina **“recuerdo imperfecto o inco
 La referencia de altura visible, tipografías, interlineado y cantidad de texto por sección está documentada en [GUIA_ESCALA_VISUAL.md](./GUIA_ESCALA_VISUAL.md). Debe consultarse antes de adaptar un nuevo autor para evitar recalibraciones manuales innecesarias.
 
 
+
+
+### Circuito web ↔ redes — continuidad del vínculo
+
+La web funciona como **centro de identidad digital** y las redes como espacios de continuidad, conversación y recurrencia.
+
+Recorrido recomendado:
+
+**GOOGLE / BÚSQUEDA → WEB → REDES → WEB**
+
+La primera visita puede llegar desde un buscador, una recomendación o una mención. La web debe resolver rápidamente quién es el autor, qué obra ofrece, por qué puede interesar y dónde seguirlo. Las redes permiten continuar el vínculo. Desde esas redes, el visitante debe poder volver fácilmente a la web para profundizar, consultar la obra o acceder a una acción concreta.
+
+Reglas de implementación y entrega:
+
+- Instagram y Facebook deben mostrarse de forma visible en la sección Contacto/Vínculo.
+- El correo queda como canal directo e institucional.
+- El teléfono personal no se muestra como dato general cuando no sea necesario.
+- WhatsApp se reserva preferentemente para una **acción concreta**, por ejemplo solicitar un ejemplar, y puede ubicarse detrás de una página intermedia para reducir exposición directa del número.
+- Al entregar la web, recomendar al autor colocar la **URL oficial del sitio en la biografía de Instagram y en la información/presentación de Facebook**.
+- En publicaciones relevantes, el autor puede volver a enlazar la web cuando necesite llevar al lector a información más completa, compra, agenda o contacto.
+- La web no reemplaza las redes ni las redes reemplazan la web: se diseñan como un circuito de ida y vuelta.
+
+Criterio estratégico: una segunda visita desde redes tiene más valor contextual que la primera visita desde Google, porque el usuario ya reconoce al autor o la obra. La web debe estar preparada para recibir esa visita con información estable y acciones claras.
+
 ### Footer estándar — identidad del cliente + firma de desarrollo
 
 Todas las webs generadas desde la plantilla incluyen un footer común con **dos zonas diferenciadas**:
