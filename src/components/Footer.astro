@@ -3,38 +3,118 @@ import { site } from '../content/site';
 const year = new Date().getFullYear();
 ---
 <footer class="site-footer">
-  <div class="container footer-grid">
+  <div class="container footer-client">
     <div>
       <strong>{site.name}</strong>
-      <p>{site.role} · {site.location}</p>
+      <p>{site.footerLine}</p>
     </div>
     <div class="links">
       {site.social.filter((item) => item.url && item.url !== "#").map((item) => <a href={item.url} target="_blank" rel="me noopener">{item.label}</a>)}
       {site.email && <a href={`mailto:${site.email}`}>Contacto</a>}
     </div>
   </div>
-  <div class="container legal">© {year} {site.name}</div>
+
+  <div class="container footer-bottom">
+    <div class="legal">© {year} {site.name}</div>
+
+    {site.credit.enabled && (
+      <a
+        class="studio-credit"
+        href={site.credit.url}
+        aria-label={`${site.credit.label}. Conocer el proyecto`}
+      >
+        <span>{site.credit.label}</span>
+        <span class="studio-mark" aria-hidden="true"></span>
+      </a>
+    )}
+  </div>
 </footer>
 
 <style>
   .site-footer {
-    padding: 3rem 0 1.5rem;
+    padding: 3rem 0 1.4rem;
     border-top: 1px solid var(--color-border);
   }
-  .footer-grid {
+
+  .footer-client {
     display: flex;
     justify-content: space-between;
+    align-items: flex-start;
     gap: 2rem;
     flex-wrap: wrap;
   }
-  p, .legal { color: var(--color-muted); }
+
+  .footer-client strong {
+    font-family: var(--font-display);
+  }
+
+  .footer-client p,
+  .legal {
+    color: var(--color-muted);
+  }
+
+  .footer-client p {
+    margin: .55rem 0 0;
+  }
+
   .links {
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
   }
-  .legal {
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.25rem 2rem;
+    flex-wrap: wrap;
     margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid color-mix(in srgb, var(--color-border) 68%, transparent);
+  }
+
+  .legal {
     font-size: .85rem;
+  }
+
+  .studio-credit {
+    display: inline-flex;
+    align-items: center;
+    gap: .55rem;
+    color: var(--color-muted);
+    font-size: .72rem;
+    letter-spacing: .035em;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .studio-credit:hover,
+  .studio-credit:focus-visible {
+    color: var(--color-accent);
+  }
+
+  .studio-mark {
+    width: 27px;
+    height: 27px;
+    flex: 0 0 27px;
+    background: currentColor;
+    -webkit-mask: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAEPElEQVR42u2YW4iVVRTHf985x5njLfMyXgY1bdCivCD1oOlDYhQUgohKOU1iKkJREIIPgvigPll4wR7MykQkiKgXyfTFQQtFxYhAakTNG5KJzjSmMzpzji//DYvFnJkz+n1nfPgWbL6911577bXWXmvttT9IIYUUUkjhMSBKiGcEZBy+ABTVnkjIqsVFV7ETyDjLDgCmAc8BI4W/AfwF/AHcdSdV6GurB5gP/ATcAlqBS8BZtUvC3QIOAG+V4FHR2AkbzwJ+A+4A+4E3gSFdrHlagn8L/A+cAWYaJaK+EH4D0AnsAkYbmiFANZBXq3ZKjQG+lPusr6QSEZBTf6/8eZ6ZzwGTgd3AOeBvtSbgC+BZsx7gdaAN2GPWR5Xw+Z1ygzqN+5m0GQRYY4L7IzeX0RqASTLEjqRjIjCul1BTNM474as0Hgt0yMKjtL7KKZFXf7p4Lk1KiZDyhgIPgA/MkZeCcUC7ss/obugCjw+B+9ojituVwibbgT8Nvh+wHDisVBl8fSIwSMreleXrFLhNov0ZWOaM0ARsLcM4j3TZDZLfL9b4GeC4jv428L3avxL8XaAFuAk0KFv9A3wH/KC5IvCLTgvgbaXjAXGWOsEfFwHNSokDgd8lwG6N7Wlt1VwbcE/9Lc63BwPfaO400F8x0QIsjDMWwlF+BRxS/xNt/Kujs8d+wGShH10atnQnRPOxxoflarG5Ucgwp4GNEuKYXOI9EwtWkQzwqlFgjnA5Fz8ohjqBRvHeBJxye/do3e4gFGnDgAsa14r5OVeQhcKuAJyXYB3qF0yZXTDj88LVau1F7UU5pXdvFMgqOAH+E364KS0iCRugQwo8MOs6Da+c8MPEq1Vz7cb3i+W6RzlZqM1Y5ojwDbLkfQn8BrDABaCtnRYDr0mRdq2tF80R0QzXXOxZqBHYJqbjgeuy0Ofy8dWy4lzRj5Ugd3QTh9qnFVihNbvE45roI5UUjUlkoS3K+wGmAkdNoDYD77uKMygwwuBXmTugKGFfNPMngU/jzELBCq/IVUY4y0xSLZN39F0pEOb6a02d26dGrjg77poo1CZXgHXCVZVQNtONAlEJoQKv9XKnTFK10CrVNgONsBm3YVCg1ihQ44Iycmuz4nlPe8RaC9mMFSn37+viAvOnMMGk0XFGUA+Bxz5zr2RIAALTKQq+FUaAro57rQnUNSXcMgi/2r0xElHABtUSbbjMPWQiYIaeiDdUpd5W/2vgBSN4ZEqJoqlyE/9LkXMvs8+cxYaaf0I1aqOA593DPqt7pQi8k5Tf96TEbOCyaqT6MgXI6a0QHvwzKy28d6c8sFkX2XW5TwPwkgJ5AvCycHtE06zKtrovf275YHsKWAkcBK4qfYbWKtxB0QzuZT2W6L/RkPY6HX6k8fkWBbI/wcKT9Lc6vLayPbhdrD+vogSVsd9iufV9CimkkEIKKfQGHgKrYgDJtXMVRgAAAABJRU5ErkJggg==") center / contain no-repeat;
+    mask: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAEPElEQVR42u2YW4iVVRTHf985x5njLfMyXgY1bdCivCD1oOlDYhQUgohKOU1iKkJREIIPgvigPll4wR7MykQkiKgXyfTFQQtFxYhAakTNG5KJzjSmMzpzji//DYvFnJkz+n1nfPgWbL6911577bXWXmvttT9IIYUUUkjhMSBKiGcEZBy+ABTVnkjIqsVFV7ETyDjLDgCmAc8BI4W/AfwF/AHcdSdV6GurB5gP/ATcAlqBS8BZtUvC3QIOAG+V4FHR2AkbzwJ+A+4A+4E3gSFdrHlagn8L/A+cAWYaJaK+EH4D0AnsAkYbmiFANZBXq3ZKjQG+lPusr6QSEZBTf6/8eZ6ZzwGTgd3AOeBvtSbgC+BZsx7gdaAN2GPWR5Xw+Z1ygzqN+5m0GQRYY4L7IzeX0RqASTLEjqRjIjCul1BTNM474as0Hgt0yMKjtL7KKZFXf7p4Lk1KiZDyhgIPgA/MkZeCcUC7ss/obugCjw+B+9ojituVwibbgT8Nvh+wHDisVBl8fSIwSMreleXrFLhNov0ZWOaM0ARsLcM4j3TZDZLfL9b4GeC4jv428L3avxL8XaAFuAk0KFv9A3wH/KC5IvCLTgvgbaXjAXGWOsEfFwHNSokDgd8lwG6N7Wlt1VwbcE/9Lc63BwPfaO400F8x0QIsjDMWwlF+BRxS/xNt/Kujs8d+wGShH10atnQnRPOxxoflarG5Ucgwp4GNEuKYXOI9EwtWkQzwqlFgjnA5Fz8ohjqBRvHeBJxye/do3e4gFGnDgAsa14r5OVeQhcKuAJyXYB3qF0yZXTDj88LVau1F7UU5pXdvFMgqOAH+E364KS0iCRugQwo8MOs6Da+c8MPEq1Vz7cb3i+W6RzlZqM1Y5ojwDbLkfQn8BrDABaCtnRYDr0mRdq2tF80R0QzXXOxZqBHYJqbjgeuy0Ofy8dWy4lzRj5Ugd3QTh9qnFVihNbvE45roI5UUjUlkoS3K+wGmAkdNoDYD77uKMygwwuBXmTugKGFfNPMngU/jzELBCq/IVUY4y0xSLZN39F0pEOb6a02d26dGrjg77poo1CZXgHXCVZVQNtONAlEJoQKv9XKnTFK10CrVNgONsBm3YVCg1ihQ44Iycmuz4nlPe8RaC9mMFSn37+viAvOnMMGk0XFGUA+Bxz5zr2RIAALTKQq+FUaAro57rQnUNSXcMgi/2r0xElHABtUSbbjMPWQiYIaeiDdUpd5W/2vgBSN4ZEqJoqlyE/9LkXMvs8+cxYaaf0I1aqOA593DPqt7pQi8k5Tf96TEbOCyaqT6MgXI6a0QHvwzKy28d6c8sFkX2XW5TwPwkgJ5AvCycHtE06zKtrovf275YHsKWAkcBK4qfYbWKtxB0QzuZT2W6L/RkPY6HX6k8fkWBbI/wcKT9Lc6vLayPbhdrD+vogSVsd9iufV9CimkkEIKKfQGHgKrYgDJtXMVRgAAAABJRU5ErkJggg==") center / contain no-repeat;
+  }
+
+  @media (max-width: 620px) {
+    .site-footer {
+      padding-top: 2.5rem;
+    }
+
+    .footer-bottom {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+
+    .studio-credit {
+      white-space: normal;
+    }
   }
 </style>
