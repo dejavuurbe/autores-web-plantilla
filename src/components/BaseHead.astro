@@ -16,14 +16,17 @@ const {
 } = Astro.props;
 
 import { localPath } from '../core/paths';
+import { site } from '../content/site';
 const absoluteImage = new URL(localPath(image), Astro.site ?? Astro.url.origin).href;
 const manifestUrl = localPath('site.webmanifest');
+const keepOutOfSearch = site.lifecycle.delivery !== 'TERMINADA';
 ---
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width" />
 <meta name="generator" content={Astro.generator} />
 <title>{title}</title>
 <meta name="description" content={description} />
+{keepOutOfSearch && <meta name="robots" content="noindex,nofollow" />}
 <link rel="canonical" href={canonical} />
 
 <meta property="og:type" content="website" />
