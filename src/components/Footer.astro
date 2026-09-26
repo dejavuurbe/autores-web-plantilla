@@ -1,5 +1,6 @@
 ---
 import { site } from '../content/site';
+import SocialIcon from './SocialIcon.astro';
 const year = new Date().getFullYear();
 ---
 <footer class="site-footer">
@@ -9,8 +10,13 @@ const year = new Date().getFullYear();
       <p>{site.footerLine}</p>
     </div>
     <div class="links">
-      {site.social.filter((item) => item.url && item.url !== "#").map((item) => <a href={item.url} target="_blank" rel="me noopener">{item.label}</a>)}
-      {site.email && <a href={`mailto:${site.email}`}>Contacto</a>}
+      {site.social.filter((item) => item.state !== 'omitted').map((item) => (
+        item.state === 'confirmed' && item.url && /^https?:\/\//.test(item.url)
+          ? <a class="footer-social" href={item.url} target="_blank" rel="me noopener"><SocialIcon platform={item.platform} />{item.label}</a>
+          : <span class="footer-social pending" aria-label={`${item.label}: Pendiente`}><SocialIcon platform={item.platform} />{item.label} <small>Pendiente</small></span>
+      ))}
+      {site.emailState === 'confirmed' && site.email && <a href={`mailto:${site.email}`}>Contacto</a>}
+      {site.emailState === 'pending' && <span class="footer-social pending">Correo <small>Pendiente</small></span>}
     </div>
   </div>
 
@@ -57,11 +63,10 @@ const year = new Date().getFullYear();
     margin: .55rem 0 0;
   }
 
-  .links {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
+  .links { display:flex;gap:1rem;flex-wrap:wrap;align-items:center; }
+  .footer-social { display:inline-flex;align-items:center;gap:.4rem;text-decoration:none; }
+  .footer-social.pending { opacity:.8; }
+  .footer-social small { font-size:.72rem;text-transform:uppercase;letter-spacing:.06em; }
 
   .footer-bottom {
     display: flex;

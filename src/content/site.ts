@@ -1,21 +1,34 @@
 export type SiteLevel = 1 | 2 | 3;
+export type PendingState = 'confirmed' | 'pending' | 'omitted';
+export type SocialPlatform = 'instagram' | 'facebook' | 'youtube' | 'tiktok' | 'x' | 'linkedin' | 'web';
+
 type Link = { label: string; url: string };
+type Social = { platform: SocialPlatform; label: string; state: PendingState; url?: string };
 type ActivityItem = { title: string; type: string; source: string; url: string; description: string };
 
 const works = [
   {
     id: 'obra-principal',
-    title: 'Título de la obra',
-    subtitle: 'Subtítulo o frase de presentación',
+    title: 'Obra principal — Pendiente de confirmación',
+    subtitle: '',
     cover: '/images/portada-placeholder.svg',
-    synopsis: 'Sinopsis breve orientada al lector. Debe explicar con claridad la propuesta del libro sin convertirse en una descripción genérica.',
-    genre: 'Género',
-    year: '2026',
-    pages: '000',
-    isbn: '000-0-00-000000-0',
-    publisher: 'Editorial / Independiente',
+    coverState: 'pending' as PendingState,
+    synopsis: 'Sinopsis pendiente de confirmación.',
+    genre: '',
+    year: '',
+    pages: '',
+    isbn: '',
+    publisher: '',
+    editorialState: {
+      genre: 'pending' as PendingState,
+      year: 'pending' as PendingState,
+      pages: 'pending' as PendingState,
+      isbn: 'pending' as PendingState,
+      publisher: 'pending' as PendingState,
+    },
     sampleUrl: '',
-    purchaseLinks: [{ label: 'Adquirí tu ejemplar', url: '#' }] as Link[],
+    purchaseLinks: [] as Link[],
+    purchaseState: 'pending' as PendingState,
     featured: true,
     aliases: [] as string[],
   },
@@ -23,62 +36,52 @@ const works = [
 
 export const site = {
   level: 1 as SiteLevel,
-  name: 'Nombre del autor',
-  canonicalName: 'Nombre del autor',
+  name: 'Nombre público — Pendiente de confirmación',
+  canonicalName: '',
   searchVariants: [] as string[],
-  role: 'Escritor/a',
-  tagline: 'Una frase breve que exprese su identidad autoral.',
-  description: 'Descripción clara del autor, su obra y los temas centrales de su trabajo.',
+  role: 'Identidad autoral pendiente de confirmación',
+  tagline: 'Presentación pendiente de confirmación.',
+  description: 'Sitio en construcción. Los datos pendientes se identificarán de forma visible y no se completarán con información inventada.',
   url: 'https://example.com',
-  email: 'contacto@example.com',
-  location: 'Ciudad, País',
-  footerLine: 'Escritor/a · Ciudad, País',
+  email: '',
+  emailState: 'pending' as PendingState,
+  location: '',
+  footerLine: 'Sitio de autor en construcción',
   credit: {
     enabled: true,
     label: 'Diseño y desarrollo web por',
     url: 'https://dejavuurbe.github.io/pierre-menard-web/proyecto/',
   },
   social: [
-    { label: 'Instagram', url: '#' },
-    { label: 'Facebook', url: '#' },
-  ] as Link[],
+    { platform: 'instagram', label: 'Instagram', state: 'pending' },
+    { platform: 'facebook', label: 'Facebook', state: 'pending' },
+  ] as Social[],
   author: {
-    shortBio: 'Biografía breve para la portada. Debe responder rápidamente quién es el autor y qué escribe.',
-    longBio: 'Biografía extendida. Sustituir por información verificada, trayectoria, publicaciones y actividad cultural relevante.',
+    shortBio: 'Biografía breve pendiente de confirmación.',
+    longBio: 'Biografía pendiente de confirmación.',
     photo: '/images/autor-placeholder.svg',
+    photoState: 'pending' as PendingState,
+    bioState: 'pending' as PendingState,
   },
 
-  // Núcleo escalable: el modelo conserva todos los datos aunque el nivel visible muestre una selección.
   works,
   featuredBook: works.find((work) => work.featured) ?? works[0],
 
-  activity: [
-    {
-      title: 'Actividad, entrevista o antecedente destacado',
-      type: 'Actividad',
-      source: 'Fuente / institución',
-      url: '#',
-      description: 'Contexto breve y verificable sobre el antecedente.',
-    },
-  ] as ActivityItem[],
+  activity: [] as ActivityItem[],
+  activityState: 'pending' as PendingState,
 
-  // Mapa derivado del diagnóstico. No se muestra como texto ni se usa para keyword stuffing.
+  lifecycle: {
+    infrastructure: 'PENDIENTE DE PUBLICACIÓN',
+    delivery: 'EN CONSTRUCCIÓN',
+  },
+
   recovery: {
     incompleteRecall: [] as string[],
     spellingVariants: [] as string[],
     disambiguationNotes: [] as string[],
   },
 
-  faq: [
-    {
-      question: '¿Quién es Nombre del autor?',
-      answer: 'Respuesta directa y verificable, pensada también para buscadores y sistemas de respuesta.',
-    },
-    {
-      question: '¿De qué trata su obra principal?',
-      answer: 'Respuesta breve que resume la propuesta de la obra sin reemplazar la sinopsis completa.',
-    },
-  ],
+  faq: [] as { question: string; answer: string }[],
 };
 
 export type SiteData = typeof site;

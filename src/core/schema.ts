@@ -14,7 +14,7 @@ export function personSchema() {
     url: site.url,
     jobTitle: site.role,
     description: site.description,
-    sameAs: validExternalUrls(site.social.map((item) => item.url)),
+    sameAs: validExternalUrls(site.social.map((item) => item.state === 'confirmed' ? item.url ?? '' : '')),
   };
 }
 
