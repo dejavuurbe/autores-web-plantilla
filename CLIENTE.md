@@ -47,6 +47,19 @@ La solicitud base se complementa con preguntas dirigidas por el diagnóstico. No
 
 ## 2. Material recibido
 
+### Control de fidelidad de materiales
+
+Para cada imagen esencial registrar, cuando sea posible:
+- archivo fuente;
+- formato;
+- tamaño en bytes;
+- dimensiones en píxeles;
+- si se usó el original o un derivado;
+- motivo de cualquier transformación.
+
+Regla: **no usar miniaturas, previews, capturas, versiones small/tiny ni archivos recomprimidos como sustituto del original entregado**. Si el original no puede transferirse con fidelidad, el estado es **BLOQUEADO POR TRANSFERENCIA**, no “resuelto”.
+
+
 - Biografía:
 - Sinopsis:
 - Género:
@@ -165,13 +178,16 @@ Estado actual del proyecto: **EN CONSTRUCCIÓN**. No cambiarlo a TERMINADA por u
 
 Marcar cada punto `APROBADO`, `PENDIENTE` o `DESCARTADO EXPRESAMENTE`. Para imágenes y enlaces esenciales, debe quedar aprobado antes de entregar.
 
-- [ ] Foto real del autor visible desde un archivo local en `public/images/`.
-- [ ] Portada real de la obra visible desde un archivo local en `public/images/`.
+- [ ] Foto real del autor visible desde un archivo local en `public/images/`, usando el original o un derivado controlado y verificado contra el original.
+- [ ] Calidad de la foto comprobada en la URL pública: no pixelada, no borrosa por compresión y sin sustitución por preview/miniatura.
+- [ ] Portada real de la obra visible desde un archivo local en `public/images/`, usando el original o un derivado controlado y verificado contra el original.
+- [ ] Portada comprobada en la URL pública: archivo correcto, sin corrupción, completa salvo recorte expresamente decidido y con legibilidad suficiente.
 - [ ] Inicio: identidad pública, obra principal y CTA correctos.
 - [ ] Obra: título, sinopsis y datos editoriales verificados; ningún ISBN, cantidad de páginas o fecha inventados.
 - [ ] Biografía aprobada por el autor.
 - [ ] Actividad: hitos, fechas, fuentes y enlaces revisados.
-- [ ] Compra: enlace real abre la obra correcta.
+- [ ] Compra: antes de marcar Pendiente se buscaron ficha, Base Maestra, Drive/Gmail relacionado y web pública por autor + obra.
+- [ ] Compra: si existe un enlace verificable, está incorporado y abre la obra correcta.
 - [ ] Crédito “Diseño y desarrollo web por” abre el destino correcto.
 - [ ] Correo/contacto real abre el canal correcto.
 - [ ] Cada red confirmada usa URL de “Compartir perfil” y se probó también desde celular; redes pendientes están identificadas y no enlazan.
