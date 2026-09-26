@@ -16,5 +16,8 @@ export const GET: APIRoute = () =>
     publisher: work.publisher,
     sampleUrl: work.sampleUrl || undefined,
     purchaseLinks: work.purchaseLinks.filter((item) => /^https?:\/\//.test(item.url)),
+    purchaseState: work.purchaseState,
+    coverState: work.coverState,
+    editorialState: work.editorialState,
     featured: work.featured,
   })), null, 2), { headers: { 'Content-Type': 'application/json; charset=utf-8' } });

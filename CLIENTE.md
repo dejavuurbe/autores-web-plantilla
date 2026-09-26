@@ -104,7 +104,7 @@ Referencia aprobada en escritorio a 100 % de zoom:
 Criterio de aceptación: cada sección debe poder percibirse completa dentro del campo visible cuando la cantidad de contenido lo permita. Si se colocan dos bloques equivalentes dentro de un mismo campo visual, diseñarlos como medias secciones.
 
 ### Datos editoriales del libro
-Si el autor dispone de ellos, mostrar en la sección Libro/Obra: género, año, páginas, ISBN y editorial/tipo de edición. Son datos breves que refuerzan la presencia editorial del libro sin crear una sección adicional. Los campos ausentes se ocultan; no se inventan.
+Si el autor dispone de ellos, mostrar en la sección Libro/Obra: género, año, páginas, ISBN y editorial/tipo de edición. Son datos breves que refuerzan la presencia editorial del libro sin crear una sección adicional. Durante el prototipo, cada dato ausente queda visible como `Pendiente`. Antes de entrega debe completarse o descartarse expresamente; nunca se inventa.
 
 ### Regla de venta
 Las acciones de compra pertenecen siempre a la sección Libro/Obra, junto a portada, título, sinopsis y datos del libro. No colocar CTA de venta en la presentación del autor.
@@ -152,3 +152,34 @@ Antes de publicar, comprobar:
 - **Recuerdo imperfecto:** se prueban variantes razonables detectadas en el diagnóstico, sin mostrar errores ortográficos en la capa humana.
 
 La web no promete ventas ni posiciones determinadas en buscadores. Su función es recibir el interés generado por el autor y conducirlo hacia la obra, la compra o lectura y la continuidad del vínculo.
+
+
+## 8. Estados operativos
+
+- **CREADA/PUBLICADA**: el repositorio existe, usa `main`, compila y GitHub Pages publica la URL. Lo acredita el estado técnico de GitHub.
+- **TERMINADA**: contenido e imágenes reales aprobados, enlaces probados, revisión visual móvil y escritorio completa y checklist final aprobado. GitHub Actions no asigna este estado.
+
+Estado actual del proyecto: **EN CONSTRUCCIÓN**. No cambiarlo a TERMINADA por un build verde o un HTTP 200.
+
+## 9. Checklist obligatorio de entrega
+
+Marcar cada punto `APROBADO`, `PENDIENTE` o `DESCARTADO EXPRESAMENTE`. Para imágenes y enlaces esenciales, debe quedar aprobado antes de entregar.
+
+- [ ] Foto real del autor visible desde un archivo local en `public/images/`.
+- [ ] Portada real de la obra visible desde un archivo local en `public/images/`.
+- [ ] Inicio: identidad pública, obra principal y CTA correctos.
+- [ ] Obra: título, sinopsis y datos editoriales verificados; ningún ISBN, cantidad de páginas o fecha inventados.
+- [ ] Biografía aprobada por el autor.
+- [ ] Actividad: hitos, fechas, fuentes y enlaces revisados.
+- [ ] Compra: enlace real abre la obra correcta.
+- [ ] Crédito “Diseño y desarrollo web por” abre el destino correcto.
+- [ ] Correo/contacto real abre el canal correcto.
+- [ ] Cada red confirmada usa URL de “Compartir perfil” y se probó también desde celular; redes pendientes están identificadas y no enlazan.
+- [ ] Los faltantes del prototipo están resueltos o descartados expresamente.
+- [ ] Navegación interna, ancla Contacto y enlaces probados en móvil y escritorio.
+- [ ] No quedan placeholders obligatorios ni badges de pendiente.
+- [ ] Revisada la URL pública después del último deploy; las dos imágenes responden y se ven.
+- [ ] Aprobación visual final de Brian/autor registrada.
+
+**Estado de entrega:** EN CONSTRUCCIÓN / TERMINADA: ____  
+**Fecha y responsable de aprobación:** ____

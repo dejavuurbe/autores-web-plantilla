@@ -2,22 +2,19 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { site } from '../content/site';
 import { identityGraphSchema, faqSchema } from '../core/schema';
+import { localPath } from '../core/paths';
 
-const asset = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}`;
-
+const book = site.featuredBook;
 const bookMeta = [
-  ['Género', site.featuredBook.genre],
-  ['Año', site.featuredBook.year],
-  ['Páginas', site.featuredBook.pages],
-  ['ISBN', site.featuredBook.isbn],
-  ['Edición', site.featuredBook.publisher],
-].filter(([, value]) => value);
+  ['Género', book.genre, book.editorialState.genre],
+  ['Año', book.year, book.editorialState.year],
+  ['Páginas', book.pages, book.editorialState.pages],
+  ['ISBN', book.isbn, book.editorialState.isbn],
+  ['Edición', book.publisher, book.editorialState.publisher],
+].filter(([, , state]) => state !== 'omitted');
+const purchaseLinks = book.purchaseLinks.filter((item) => /^https?:\/\//.test(item.url));
 ---
-<BaseLayout
-  title={`${site.name} | ${site.role}`}
-  description={site.description}
-  schema={[identityGraphSchema(), faqSchema()]}
->
+<BaseLayout title={`${site.name} | ${site.role}`} description={site.description} schema={[identityGraphSchema(), faqSchema()]}>
   <section class="hero section" id="inicio">
     <div class="container hero-grid">
       <div>
@@ -25,22 +22,37 @@ const bookMeta = [
         <h1>{site.name}</h1>
         <p class="lead">{site.tagline}</p>
         <div class="actions"><a class="button secondary" href="#obra">Conocer la obra</a></div>
+        {site.author.bioState === 'pending' && <p class="pending-note">Presentación del autor: pendiente de confirmación.</p>}
       </div>
-      <img class="portrait" src={asset(site.author.photo)} alt={`Retrato de ${site.name}`} width="700" height="820" />
+      {site.author.photoState !== 'omitted' && (
+        <figure class="media-item">
+          <img class="portrait" src={localPath(site.author.photo)} alt={site.author.photoState === 'confirmed' ? `Retrato de ${site.name}` : 'Retrato pendiente'} width="700" height="820" />
+          {site.author.photoState === 'pending' && <figcaption class="pending-note">Foto del autor — Pendiente</figcaption>}
+        </figure>
+      )}
     </div>
   </section>
 
   <section class="section book-section" id="obra">
     <div class="container grid-two">
-      <img class="cover" src={asset(site.featuredBook.cover)} alt={`Portada de ${site.featuredBook.title}`} width="520" height="780" />
+      {book.coverState !== 'omitted' && (
+        <figure class="media-item">
+          <img class="cover" src={localPath(book.cover)} alt={book.coverState === 'confirmed' ? `Portada de ${book.title}` : 'Portada pendiente'} width="520" height="780" />
+          {book.coverState === 'pending' && <figcaption class="pending-note">Portada — Pendiente</figcaption>}
+        </figure>
+      )}
       <div>
         <p class="eyebrow">Obra</p>
-        <h2>{site.featuredBook.title}</h2>
-        {site.featuredBook.subtitle && <p class="book-subtitle">{site.featuredBook.subtitle}</p>}
-        <p class="lead">{site.featuredBook.synopsis}</p>
-        {bookMeta.length > 0 && <dl class="book-meta">{bookMeta.map(([label,value]) => <div><dt>{label}</dt><dd>{value}</dd></div>)}</dl>}
-        {site.featuredBook.purchaseLinks?.some((item) => item.url && item.url !== '#') && <div class="purchase">{site.featuredBook.purchaseLinks.filter((item)=>item.url&&item.url!=='#').map((item)=><a class="button" href={item.url} target="_blank" rel="noopener">{item.label}</a>)}</div>}
-        {site.featuredBook.sampleUrl && <div class="sample-link"><a href={site.featuredBook.sampleUrl}>Leer una muestra autorizada</a></div>}
+        <h2>{book.title}</h2>
+        {book.subtitle && <p class="book-subtitle">{book.subtitle}</p>}
+        <p class="lead">{book.synopsis}</p>
+        {bookMeta.length > 0 && <dl class="book-meta">{bookMeta.map(([label,value,state]) => <div><dt>{label}</dt><dd>{state === 'confirmed' && value ? value : <span class="pending-inline">Pendiente</span>}</dd></div>)}</dl>}
+        {purchaseLinks.length > 0
+          ? <div class="purchase">{purchaseLinks.map((item)=><a class="button" href={item.url} target="_blank" rel="noopener">{item.label}</a>)}</div>
+          : book.purchaseState === 'pending'
+            ? <p class="pending-note">Enlace de compra — Pendiente</p>
+            : null}
+        {book.sampleUrl && <div class="sample-link"><a href={book.sampleUrl}>Leer una muestra autorizada</a></div>}
       </div>
     </div>
   </section>
@@ -51,19 +63,23 @@ const bookMeta = [
 </BaseLayout>
 
 <style>
-  .hero { padding-top: clamp(3rem, 8vw, 8rem); }
-  .hero-grid { display:grid; gap:clamp(2rem,6vw,6rem); align-items:center; }
-  .portrait { width:100%; max-height:680px; object-fit:cover; border-radius:var(--radius); box-shadow:var(--shadow); }
-  .actions { display:flex; gap:.75rem; flex-wrap:wrap; margin-top:2rem; }
-  .book-section { background:var(--color-surface); }
-  .cover { max-width:360px; margin-inline:auto; border-radius:8px; box-shadow:var(--shadow); }
-  .book-subtitle { margin:-.25rem 0 1rem; color:var(--color-muted); font-family:var(--font-display); font-size:1.35rem; }
-  .book-meta { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.7rem 1.2rem; margin:1.35rem 0 0; }
-  .book-meta div { padding-top:.65rem; border-top:1px solid var(--color-border); }
-  .book-meta dt { font-size:.75rem; font-weight:700; text-transform:uppercase; letter-spacing:.08em; color:var(--color-muted); }
-  .book-meta dd { margin:.2rem 0 0; font-weight:600; }
-  .purchase { margin-top:1.5rem; display:flex; gap:.75rem; flex-wrap:wrap; }
-  .sample-link { margin-top:1rem; }
-  .bio-grid { display:grid; gap:clamp(2rem,6vw,5rem); align-items:start; }
-  @media (min-width:850px) { .hero-grid { grid-template-columns:1.2fr .8fr; } .bio-grid { grid-template-columns:.8fr 1.2fr; } }
+  .hero{padding-top:clamp(3rem,8vw,8rem)}
+  .hero-grid{display:grid;gap:clamp(2rem,6vw,6rem);align-items:center}
+  .portrait{width:100%;max-height:680px;object-fit:cover;border-radius:var(--radius);box-shadow:var(--shadow)}
+  .actions{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:2rem}
+  .book-section{background:var(--color-surface)}
+  .cover{max-width:360px;margin-inline:auto;border-radius:8px;box-shadow:var(--shadow)}
+  .media-item{margin:0}
+  .pending-note,.pending-inline{display:inline-flex;align-items:center;gap:.35rem;color:var(--color-muted);font-size:.86rem}
+  .pending-note{margin:.65rem 0 0;padding:.35rem .65rem;border:1px dashed var(--color-border);border-radius:999px}
+  .pending-inline{font-weight:700}
+  .book-subtitle{margin:-.25rem 0 1rem;color:var(--color-muted);font-family:var(--font-display);font-size:1.35rem}
+  .book-meta{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.7rem 1.2rem;margin:1.35rem 0 0}
+  .book-meta div{padding-top:.65rem;border-top:1px solid var(--color-border)}
+  .book-meta dt{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--color-muted)}
+  .book-meta dd{margin:.2rem 0 0;font-weight:600}
+  .purchase{margin-top:1.5rem;display:flex;gap:.75rem;flex-wrap:wrap}
+  .sample-link{margin-top:1rem}
+  .bio-grid{display:grid;gap:clamp(2rem,6vw,5rem);align-items:start}
+  @media(min-width:850px){.hero-grid{grid-template-columns:1.2fr .8fr}.bio-grid{grid-template-columns:.8fr 1.2fr}}
 </style>

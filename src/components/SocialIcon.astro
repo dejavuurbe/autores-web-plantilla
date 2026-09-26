@@ -1,0 +1,15 @@
+---
+import type { SocialPlatform } from '../content/site';
+interface Props { platform: SocialPlatform; }
+const { platform } = Astro.props;
+---
+<svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  {platform === 'instagram' && <><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="18" cy="6" r="1" fill="currentColor"/></>}
+  {platform === 'facebook' && <path fill="currentColor" d="M13.4 21v-8h2.7l.4-3.1h-3.1v-2c0-.9.3-1.6 1.6-1.6h1.7V3.5c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.2H7.2V13H10v8z"/>}
+  {platform === 'youtube' && <><path fill="currentColor" d="M23 7.1a3 3 0 0 0-2.1-2.2C19 4.4 12 4.4 12 4.4s-7 0-8.9.5A3 3 0 0 0 1 7.1 31 31 0 0 0 .5 12s0 3.2.5 4.9a3 3 0 0 0 2.1 2.2c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.2c.5-1.7.5-4.9.5-4.9s0-3.2-.5-4.9"/><path fill="var(--color-bg)" d="m9.7 15.5 5.9-3.5-5.9-3.5z"/></>}
+  {platform === 'tiktok' && <path fill="currentColor" d="M19.6 7.1a6.3 6.3 0 0 1-3.8-1.3v8.1a6.1 6.1 0 1 1-5.3-6v3.3a2.8 2.8 0 1 0 2 2.7V2h3.3c.2 2.2 1.7 3.8 3.8 4.2z"/>}
+  {platform === 'x' && <path fill="currentColor" d="M18.9 2H22l-6.8 7.8L23.2 22h-6.3l-4.9-6.4L6.4 22H3.2l7.3-8.4L2.8 2h6.5l4.4 5.8zM17.8 20h1.7L8.3 3.9H6.5z"/>}
+  {platform === 'linkedin' && <><path fill="currentColor" d="M4.5 3A1.8 1.8 0 1 0 4.5 6.6 1.8 1.8 0 0 0 4.5 3M3 8h3v13H3zM9 8h2.9v1.8h.1A3.2 3.2 0 0 1 15 7.7c3.1 0 3.7 2 3.7 4.7V21h-3v-7.6c0-1.8 0-3.2-2-3.2s-2.3 1.5-2.3 3.1V21H9z"/></>}
+  {platform === 'web' && <><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3.5 12h17M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18" fill="none" stroke="currentColor" stroke-width="1.5"/></>}
+</svg>
+<style>.social-icon{width:1.3rem;height:1.3rem;flex:0 0 1.3rem;display:block}</style>

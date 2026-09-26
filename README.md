@@ -54,7 +54,7 @@ Funciones:
 
 Cuando exista dominio propio, se prioriza un correo del tipo `nombre@dominio.com`. Si el autor usa Gmail u otro proveedor, puede mostrarse igualmente si es el correo real vinculado a su identidad autoral.
 
-En prototipos puede usarse un correo ficticio para probar el diseño, pero debe sustituirse por un correo real antes de la publicación definitiva.
+En prototipos el correo pendiente se muestra como tal y no tiene enlace. Nunca se usa un correo ficticio como si fuera real.
 
 ## Principios
 
@@ -64,7 +64,7 @@ En prototipos puede usarse un correo ficticio para probar el diseño, pero debe 
 - SEO básico desde el inicio.
 - Accesibilidad y buen rendimiento.
 - Cada cliente se crea en un repositorio independiente a partir de esta plantilla.
-- Los datos no confirmados se ocultan; no se inventan.
+- Durante el prototipo, los faltantes se muestran como `Pendiente`; en entrega se completan o se descartan expresamente. Nunca se inventan datos.
 
 ## Flujo de trabajo
 
@@ -216,3 +216,8 @@ Referencia validada:
 - los enlaces externos a redes, correo y WhatsApp mantienen su navegación externa normal.
 
 Si aparece un destello o transición visible durante el prototipo en `github.io`, distinguir entre un problema interno de navegación y el comportamiento del hosting temporal. La prueba final se repite sobre el dominio oficial.
+
+
+## Estados de contenido y entrega
+
+La compilación y GitHub Pages acreditan únicamente la infraestructura: repositorio creado y sitio publicado. No certifican que la web esté terminada. El estado de entrega se mantiene por separado en `CLIENTE.md`: `EN CONSTRUCCIÓN` hasta que la lista final esté aprobada; recién entonces `TERMINADA`. En prototipo, redes y datos ausentes muestran icono o campo `Pendiente`, sin enlaces falsos. Si el cliente decide expresamente no usar un dato o una red, se marca `omitted` y no se muestra. Los datos confirmados se activan solo con fuente/enlace real.
