@@ -10,7 +10,7 @@ En escritorio, una sección principal debe poder verse completa dentro de una pa
 
 ```css
 --header-height: 76px;
---section-full: calc(100svh - var(--header-height));
+--section-full: min(calc(100svh - var(--header-height)), 1004px);
 --section-half: calc(var(--section-full) / 2);
 ```
 
@@ -20,7 +20,7 @@ Por lo tanto:
 - viewport de 900 px de alto → sección completa aproximada: **824 px**;
 - viewport de 1080 px de alto → sección completa aproximada: **1004 px**.
 
-La medida correcta es siempre `100svh - 76px`, no una altura fija en píxeles.
+La sección sigue la altura útil del viewport hasta un máximo de **1004 px**. Ese techo conserva la calibración aprobada para una pantalla de 1080 px de alto y evita que, en viewports CSS extremadamente altos —por ejemplo al usar zoom de navegador muy reducido—, la sección crezca indefinidamente mientras el contenido ya dejó de escalar.
 
 En móvil (`< 900px`) no se fuerza una pantalla completa: la sección vuelve a altura automática para evitar recortes.
 
@@ -253,7 +253,7 @@ En escritorio, la sección Obra se considera correctamente calibrada cuando, sin
 
 Si alguno queda cortado, revisar primero el presupuesto textual y los espacios verticales.
 
-La prueba debe hacerse con zoom del navegador al **100 %**.
+La aceptación principal debe comprobarse con zoom del navegador al **100 %**. Como prueba de estrés adicional, revisar también aproximadamente **33–35 %** en escritorio: el contenido puede reducirse, pero la sección no debe expandirse hasta producir grandes vacíos artificiales. Esta prueba secundaria sirve para detectar desproporciones; no sustituye la validación principal al 100 %.
 
 ## 7. Qué no copiar mecánicamente
 
@@ -411,3 +411,21 @@ Orden de diagnóstico ampliado:
 6. recién después modificar dimensiones de imágenes o elementos principales.
 
 Este criterio debe aplicarse especialmente a cartas, citas, manifiestos, biografías, prólogos y otros bloques de prosa continua.
+
+
+## 11. Laboratorio — techo de altura para viewports CSS extremos
+
+Hallazgo incorporado a prueba el 28/09/2026.
+
+En zoom de navegador muy reducido (aprox. 33–35 %), el viewport expresado en píxeles CSS crece mucho. Con `--section-full: calc(100svh - var(--header-height))`, la altura de cada sección seguía aumentando aunque tipografías, retratos y portadas ya estuvieran limitados por `clamp()` y máximos propios. El resultado era contenido pequeño rodeado por demasiado espacio vacío.
+
+Candidato de laboratorio:
+
+```css
+--section-full: min(calc(100svh - var(--header-height)), 1004px);
+--section-half: calc(var(--section-full) / 2);
+```
+
+El valor **1004 px** corresponde a la altura útil ya documentada para un viewport de 1080 px con header de 76 px. Por debajo de ese tamaño no cambia el comportamiento actual; por encima, evita crecimiento vertical indefinido.
+
+Antes de promover a `main`, comprobar al menos Rosa Urso y Patricia Raquel Grif con el mismo navegador y resolución, a 100 % y 33–35 % de zoom. No promover si el techo provoca recortes, altera móvil o empeora una composición que actualmente funciona.

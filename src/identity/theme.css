@@ -14,7 +14,7 @@
 
   /* Escala vertical estándar de la Web Nivel 1 */
   --header-height: 76px;
-  --section-full: calc(100svh - var(--header-height));
+  --section-full: min(calc(100svh - var(--header-height)), 1004px);
   --section-half: calc(var(--section-full) / 2);
   --section-full-pad-y: clamp(1.8rem, 3.2vh, 2.8rem);
   --section-half-pad-y: clamp(1rem, 2vh, 1.8rem);
