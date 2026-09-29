@@ -126,3 +126,216 @@ h2 {
     display: block;
   }
 }
+
+
+/* =========================================================
+   SISTEMA VISUAL LAB — CUATRO EJES
+   Fondo + Superficie + Carácter + Tratamiento de imagen
+   Se activa desde site.visual en src/content/site.ts.
+   ========================================================= */
+
+body {
+  --visual-panel: var(--color-surface);
+  --visual-panel-strong: var(--color-surface);
+  --visual-panel-border: var(--color-border);
+  --visual-panel-shadow: var(--shadow);
+  --visual-glass-blur: 18px;
+  --visual-section-gap: clamp(1rem, 2.6vw, 2rem);
+  position: relative;
+  min-height: 100vh;
+  isolation: isolate;
+}
+
+/* EJE 1 — FONDO */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -3;
+  pointer-events: none;
+  background: var(--color-bg);
+}
+
+body[data-bg="clean"]::before {
+  background: var(--color-bg);
+}
+
+body[data-bg="chromatic"]::before {
+  background:
+    radial-gradient(circle at 16% 18%, color-mix(in srgb, var(--color-accent) 28%, transparent) 0 12%, transparent 35%),
+    radial-gradient(circle at 84% 16%, color-mix(in srgb, var(--color-muted) 18%, transparent) 0 14%, transparent 38%),
+    linear-gradient(135deg,
+      color-mix(in srgb, var(--color-bg) 82%, white),
+      var(--color-bg) 48%,
+      color-mix(in srgb, var(--color-accent) 20%, var(--color-bg))
+    );
+}
+
+body[data-bg="textured"]::before {
+  background:
+    linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,.028) 1px, transparent 1px),
+    radial-gradient(circle at 20% 22%, color-mix(in srgb, var(--color-accent) 14%, transparent), transparent 34%),
+    var(--color-bg);
+  background-size: 22px 22px, 22px 22px, auto, auto;
+}
+
+body[data-bg="scenic"]::before {
+  background:
+    linear-gradient(
+      color-mix(in srgb, var(--color-bg) 40%, transparent),
+      color-mix(in srgb, var(--color-bg) 64%, transparent)
+    ),
+    var(--visual-bg-image),
+    linear-gradient(135deg, var(--color-bg), color-mix(in srgb, var(--color-accent) 18%, var(--color-bg)));
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* EJE 2 — SUPERFICIE */
+.section {
+  background: transparent;
+}
+
+body[data-surface="open"] .section > .container {
+  background: transparent;
+}
+
+body[data-surface="block"] .section > .container {
+  padding: clamp(1.35rem, 3.2vw, 3rem);
+  background: var(--visual-panel);
+  border: 1px solid var(--visual-panel-border);
+}
+
+body[data-surface="cards"] .section > .container {
+  margin-block: var(--visual-section-gap);
+  padding: clamp(1.35rem, 3.2vw, 3rem);
+  background: var(--visual-panel);
+  border: 1px solid var(--visual-panel-border);
+  border-radius: calc(var(--radius) + 6px);
+  box-shadow: var(--visual-panel-shadow);
+}
+
+body[data-surface="glass"] {
+  --visual-panel: color-mix(in srgb, var(--color-surface) 64%, transparent);
+  --visual-panel-strong: color-mix(in srgb, var(--color-surface) 78%, transparent);
+  --visual-panel-border: color-mix(in srgb, white 54%, var(--color-border));
+}
+
+body[data-surface="glass"] .section > .container {
+  margin-block: var(--visual-section-gap);
+  padding: clamp(1.35rem, 3.2vw, 3rem);
+  background: var(--visual-panel);
+  border: 1px solid var(--visual-panel-border);
+  border-radius: calc(var(--radius) + 8px);
+  box-shadow: var(--visual-panel-shadow);
+  -webkit-backdrop-filter: blur(var(--visual-glass-blur)) saturate(125%);
+  backdrop-filter: blur(var(--visual-glass-blur)) saturate(125%);
+}
+
+body[data-surface="cards"] .card,
+body[data-surface="glass"] .card {
+  background: var(--visual-panel-strong);
+}
+
+/* EJE 3 — CARÁCTER */
+body[data-character="editorial"] {
+  --visual-panel-shadow: 0 16px 44px rgba(0, 0, 0, .08);
+}
+
+body[data-character="organic"] {
+  --radius: 28px;
+  --visual-panel-shadow: 0 18px 46px rgba(54, 44, 32, .11);
+}
+
+body[data-character="organic"] .button {
+  border-radius: 1.2rem;
+}
+
+body[data-character="cinematic"] {
+  --visual-panel-shadow: 0 30px 80px rgba(0, 0, 0, .24);
+}
+
+body[data-character="cinematic"] h1,
+body[data-character="cinematic"] h2 {
+  letter-spacing: -.025em;
+}
+
+body[data-character="graphic"] {
+  --radius: 8px;
+  --visual-panel-shadow: 8px 8px 0 color-mix(in srgb, var(--color-accent) 34%, transparent);
+}
+
+body[data-character="graphic"] .button {
+  border-radius: 8px;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+
+/* EJE 4 — IMAGEN */
+body[data-image="document"] :is(.portrait, .cover) {
+  border-radius: 0;
+  box-shadow: none;
+  object-fit: contain;
+}
+
+body[data-image="framed"] :is(.portrait, .cover) {
+  border-radius: var(--radius);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow);
+}
+
+body[data-image="integrated"] :is(.portrait, .cover) {
+  border-radius: calc(var(--radius) * .75);
+  box-shadow: none;
+  mix-blend-mode: normal;
+  opacity: .96;
+}
+
+body[data-image="integrated"] .media-item {
+  position: relative;
+}
+
+body[data-image="integrated"] .media-item::after {
+  content: "";
+  position: absolute;
+  inset: 8% -4% -6% 8%;
+  z-index: -1;
+  border-radius: var(--radius);
+  background: color-mix(in srgb, var(--color-accent) 18%, transparent);
+}
+
+body[data-image="hero"] :is(.portrait, .cover) {
+  width: 100%;
+  max-width: none;
+  max-height: min(72svh, 760px);
+  object-fit: cover;
+  border-radius: calc(var(--radius) + 4px);
+  box-shadow: var(--shadow);
+}
+
+/* Fallback progresivo para glass */
+@supports not ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+  body[data-surface="glass"] .section > .container,
+  body[data-surface="glass"] .card {
+    background: color-mix(in srgb, var(--color-surface) 94%, var(--color-bg));
+  }
+}
+
+@media (max-width: 919px) {
+  body[data-surface="block"] .section > .container,
+  body[data-surface="cards"] .section > .container,
+  body[data-surface="glass"] .section > .container {
+    width: min(calc(100% - 1rem), var(--max-width));
+    padding: 1.1rem;
+  }
+
+  body[data-bg="scenic"]::before {
+    background-position: center top;
+  }
+
+  body[data-image="hero"] :is(.portrait, .cover) {
+    max-height: 70svh;
+  }
+}
