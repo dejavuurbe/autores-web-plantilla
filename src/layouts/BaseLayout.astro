@@ -3,6 +3,7 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { site } from '../content/site';
+import { localPath } from '../core/paths';
 import '../identity/theme.css';
 import '../styles/global.css';
 
@@ -13,13 +14,22 @@ interface Props {
 }
 
 const { title, description, schema } = Astro.props;
+const visualBackgroundImage = site.visual.backgroundImage
+  ? `url("${localPath(site.visual.backgroundImage)}")`
+  : 'none';
 ---
 <!doctype html>
 <html lang="es">
   <head>
     <BaseHead title={title} description={description} schema={schema} />
   </head>
-  <body>
+  <body
+    data-bg={site.visual.background}
+    data-surface={site.visual.surface}
+    data-character={site.visual.character}
+    data-image={site.visual.image}
+    style={`--visual-bg-image: ${visualBackgroundImage}`}
+  >
     <Header />
     <div class="project-status" role="status">
       <strong>Infraestructura: {site.lifecycle.infrastructure}</strong>

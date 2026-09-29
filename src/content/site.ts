@@ -1,6 +1,10 @@
 export type SiteLevel = 1 | 2 | 3;
 export type PendingState = 'confirmed' | 'pending' | 'omitted';
 export type SocialPlatform = 'instagram' | 'facebook' | 'youtube' | 'tiktok' | 'x' | 'linkedin' | 'web';
+export type VisualBackground = 'clean' | 'chromatic' | 'textured' | 'scenic';
+export type VisualSurface = 'open' | 'block' | 'cards' | 'glass';
+export type VisualCharacter = 'editorial' | 'organic' | 'cinematic' | 'graphic';
+export type VisualImage = 'document' | 'framed' | 'integrated' | 'hero';
 
 type Link = { label: string; url: string };
 type Social = { platform: SocialPlatform; label: string; state: PendingState; url?: string };
@@ -47,6 +51,14 @@ export const site = {
   emailState: 'pending' as PendingState,
   location: '',
   footerLine: 'Sitio de autor en construcción',
+  visual: {
+    background: 'clean' as VisualBackground,
+    surface: 'open' as VisualSurface,
+    character: 'editorial' as VisualCharacter,
+    image: 'document' as VisualImage,
+    backgroundImage: '',
+  },
+
   credit: {
     enabled: true,
     label: 'Diseño y desarrollo web por',

@@ -56,6 +56,12 @@ Cuando exista dominio propio, se prioriza un correo del tipo `nombre@dominio.com
 
 En prototipos el correo pendiente se muestra como tal y no tiene enlace. Nunca se usa un correo ficticio como si fuera real.
 
+## Sistema visual de cuatro ejes — laboratorio
+
+La plantilla incluye en la rama de laboratorio un sistema de variantes visuales basado en cuatro decisiones independientes: **fondo, superficie, carácter y tratamiento de imagen**. La guía y las combinaciones recomendadas están documentadas en [GUIA_VARIANTES_VISUALES.md](./GUIA_VARIANTES_VISUALES.md).
+
+El objetivo no es generar combinaciones infinitas, sino disponer de un vocabulario visual pequeño y suficiente para adaptar la mayoría de los géneros literarios sin copiar la identidad de otro cliente.
+
 ## Principios
 
 - Identidad del autor por encima de una estética genérica.
