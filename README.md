@@ -221,3 +221,11 @@ Si aparece un destello o transición visible durante el prototipo en `github.io`
 ## Estados de contenido y entrega
 
 La compilación y GitHub Pages acreditan únicamente la infraestructura: repositorio creado y sitio publicado. No certifican que la web esté terminada. El estado de entrega se mantiene por separado en `CLIENTE.md`: `EN CONSTRUCCIÓN` hasta que la lista final esté aprobada; recién entonces `TERMINADA`. En prototipo, redes y datos ausentes muestran icono o campo `Pendiente`, sin enlaces falsos. Si el cliente decide expresamente no usar un dato o una red, se marca `omitted` y no se muestra. Los datos confirmados se activan solo con fuente/enlace real.
+
+## Procedimientos comprobados — consulta obligatoria
+
+Antes de adaptar una nueva web, consultar [la guía central de procedimientos comprobados](https://github.com/dejavuurbe/web-autores-control/blob/main/docs/PROCEDIMIENTOS_COMPROBADOS.md). Incluye compras física/digital, Hotmart, actividades, escala visual, preparación para buscadores e IA, cambio de dominio y medición desde el inicio.
+
+Todo procedimiento exitoso debe quedar registrado con pasos reproducibles, requisitos, configuración, pruebas, evidencia, límites y reversión. El caso particular permanece documentado en el repositorio del cliente; el método reusable se registra en la guía central y se enlaza desde el flujo. No copiar IDs de Analytics, enlaces de compra, identidades ni credenciales de otra web.
+
+La recopilación de métricas comienza desde la activación de cada sitio, aunque el cliente todavía no contrate informes. Los informes y análisis pueden ofrecerse posteriormente como servicio. Cuando Inicio ya ofrezca claramente libro físico y digital, utilizar dos botones directos en la sección Obra; la página intermedia no es obligatoria.
